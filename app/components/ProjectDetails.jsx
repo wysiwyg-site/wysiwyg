@@ -84,7 +84,7 @@ export default function ProjectDetails() {
         className=""
         style={{
           y: backgroundY,
-          backgroundImage: `url(/images/projects/${project_id}/MainBG.jpg)`,
+          backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL}${project.mainImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           position: "fixed",

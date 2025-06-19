@@ -1,16 +1,18 @@
 import React from "react";
-import ProjectDetails from "../../components/ProjectDetails"; // or whatever interval you prefer
+import ProjectDetails from "../../components/ProjectDetails";
 
 const ProjectPage = ({ params }) => {
   const project = params.project_id;
 
-  if (!project) return <p></p>;
+  if (!project) return <p>Loading...</p>;
 
   return (
-    <div className=" overflow-hidden">
+    <div className="overflow-hidden">
       <ProjectDetails project_id={project} />
     </div>
   );
 };
 
 export default ProjectPage;
+
+// Static generation of dynamic routes

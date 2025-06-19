@@ -36,7 +36,7 @@ const Botton = ({ value, size, color }) => {
               hovered ? "translate-y-0" : "translate-y-full"
             }`}
           >
-            /wizz-I-wig
+            /wizz-I-wig/
           </span>
         </>
       ) : size === "lg" ? (
