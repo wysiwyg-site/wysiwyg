@@ -174,44 +174,30 @@ export default function ProjectDetails() {
             </div>
           </div>
         </div>
-        <Caraousel
-          images={project.images
-            .slice(0, 4)
-            .filter((imgSrc) => imgSrc !== project.mainImage)}
-        />
+        <Caraousel images={project.images.slider1} />
         {/* Image Collage */}
         <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 py-8 md:py-20">
-          {project.images
-            ?.slice(4, 8)
-            .filter((imgSrc) => imgSrc !== project.mainImage)
-            .map((imgSrc, index) => (
-              <img
-                key={index}
-                src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
-                alt={`Project image ${index + 1}`}
-                className="w-full object-cover rounded-sm"
-              />
-            ))}
+          {project.images.column1.map((imgSrc, index) => (
+            <img
+              key={index}
+              src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
+              alt={`Project image ${index + 1}`}
+              className="w-full object-cover rounded-sm"
+            />
+          ))}
         </div>
         <div className="bg-[#fefdf8] ">
-          <Caraousel
-            images={project.images
-              .slice(8, 11)
-              .filter((imgSrc) => imgSrc !== project.mainImage)}
-          />
+          <Caraousel images={project.images.slider2} />
         </div>
         <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 py-8 md:py-20">
-          {project.images
-            ?.slice(11)
-            .filter((imgSrc) => imgSrc !== project.mainImage)
-            .map((imgSrc, index) => (
-              <img
-                key={index}
-                src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
-                alt={`Project image ${index + 1}`}
-                className="w-full object-cover rounded-sm"
-              />
-            ))}
+          {project.images.column2.map((imgSrc, index) => (
+            <img
+              key={index}
+              src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
+              alt={`Project image ${index + 1}`}
+              className="w-full object-cover rounded-sm"
+            />
+          ))}
         </div>
       </motion.div>
     </main>

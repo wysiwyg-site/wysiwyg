@@ -2,7 +2,6 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState, useRef } from "react";
 import Fuse from "fuse.js";
-import { projects, categories } from "../constants/portfolio.json"; // replace with actual import path
 import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "./FadeIn";
@@ -14,6 +13,8 @@ export default function SearchPage() {
   const query = searchParams.get("q") || "";
   const [projectResults, setProjectResults] = useState([]);
   const [categoryResults, setCategoryResults] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [categories, setCategories] = useState([]); // Assuming you will have categories too
 
   const { scrollYProgress } = useScroll();
   const lenisRef = useRef(null);
@@ -29,11 +30,36 @@ export default function SearchPage() {
 
     requestAnimationFrame(raf);
 
-    // 🚨 Clean up on component unmount
     return () => {
       lenis.destroy();
       lenisRef.current = null;
     };
+  }, []);
+
+  // 🔁 Fetch projects (and optionally categories)
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/projects`);
+        const data = await res.json();
+        setProjects(data);
+      } catch (err) {
+        console.error("Failed to fetch projects:", err);
+      }
+
+      // Uncomment this if you have a categories endpoint
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/categories`
+        );
+        const data = await res.json();
+        setCategories(data);
+      } catch (err) {
+        console.error("Failed to fetch categories:", err);
+      }
+    }
+
+    fetchData();
   }, []);
 
   const combinedData = useMemo(() => {
@@ -43,7 +69,7 @@ export default function SearchPage() {
       type: "category",
     }));
     return [...taggedProjects, ...taggedCategories];
-  }, []);
+  }, [projects, categories]);
 
   const fuse = useMemo(() => {
     return new Fuse(combinedData, {
@@ -70,7 +96,7 @@ export default function SearchPage() {
 
   return (
     <div className="bg-[#111010]">
-      <div className="min-h-screen  p-6 md:p-12 pt-15 md:pt-25 text-[#fefdf8] animate-fadeIn">
+      <div className="min-h-screen p-6 md:p-12 pt-15 md:pt-25 text-[#fefdf8] animate-fadeIn max-w-[80vw]">
         <h1 className="text-2xl md:text-3xl font-semibold mb-6">
           Search results for: <span className="text-blue-500">{query}</span>
         </h1>
@@ -83,11 +109,11 @@ export default function SearchPage() {
                 <Link
                   key={index}
                   href={`/projects/${project.project_id}`}
-                  className="bg-[#1c1c1c] rounded-lg overflow-hidden shadow-md border border-gray-800 hover:shadow-lg transition "
+                  className="bg-[#1c1c1c] rounded-lg overflow-hidden shadow-md border border-gray-800 hover:shadow-lg transition"
                 >
                   <div className="w-full h-48 relative">
                     <Image
-                      src={`/images/projects/${project.project_id}/MainBG.jpg`}
+                      src={`${process.env.NEXT_PUBLIC_BASE_URL}${project.mainImage}`}
                       alt={project.title}
                       layout="fill"
                       objectFit="cover"
@@ -100,18 +126,6 @@ export default function SearchPage() {
                     <p className="text-gray-300 text-sm">
                       {project.projectDescription}
                     </p>
-                    {/* {project.tags && (
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {project.tags.map((tag, i) => (
-                          <span
-                            key={i}
-                            className="text-xs px-2 py-1 bg-gray-700 text-gray-100 rounded-full"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )} */}
                   </div>
                 </Link>
               ))}
@@ -143,9 +157,11 @@ export default function SearchPage() {
           </>
         )}
 
-        {projectResults.length === 0 && categoryResults.length === 0 && (
-          <p className="text-gray-500 text-center mt-20">No results found.</p>
-        )}
+        {projectResults.length === 0 &&
+          categoryResults.length === 0 &&
+          query.trim() !== "" && (
+            <p className="text-gray-500 text-center mt-20">No results found.</p>
+          )}
       </div>
     </div>
   );

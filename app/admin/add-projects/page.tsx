@@ -22,14 +22,17 @@ export default function AddProject() {
     tags: "",
   });
 
-  const [images, setImages] = useState<File[]>([]);
+  const [slider1Images, setSlider1Images] = useState<File[]>([]);
+  const [slider2Images, setSlider2Images] = useState<File[]>([]);
+  const [column1Images, setColumn1Images] = useState<File[]>([]);
+  const [column2Images, setColumn2Images] = useState<File[]>([]);
+  const [mainImage, setMainImage] = useState<File | null>(null);
+
   const [message, setMessage] = useState("");
-  const [mainImage, setMainImage] = useState<string>("");
   const router = useRouter();
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-
     if (name.startsWith("meta.")) {
       const key = name.split(".")[1];
       setFormData((prev) => ({
@@ -47,8 +50,13 @@ export default function AddProject() {
     }
   };
 
-  const handleImageChange = (e: any) => {
-    setImages([...e.target.files]);
+  const handleImageChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    setter: React.Dispatch<React.SetStateAction<File[]>>
+  ) => {
+    if (e.target.files) {
+      setter(Array.from(e.target.files));
+    }
   };
 
   const handleSubmit = async (e: any) => {
@@ -82,9 +90,15 @@ export default function AddProject() {
       )
     );
 
-    images.forEach((file) => {
-      payload.append("images", file);
-    });
+    if (mainImage) {
+      payload.append("mainImage", mainImage);
+    }
+
+    slider1Images.forEach((file) => payload.append("slider1", file));
+    slider2Images.forEach((file) => payload.append("slider2", file));
+    column1Images.forEach((file) => payload.append("column1", file));
+    column2Images.forEach((file) => payload.append("column2", file));
+
     try {
       await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/projects`,
@@ -109,7 +123,13 @@ export default function AddProject() {
         category: "",
         tags: "",
       });
-      setImages([]);
+
+      setSlider1Images([]);
+      setSlider2Images([]);
+      setColumn1Images([]);
+      setColumn2Images([]);
+      setMainImage(null);
+
       router.push("/admin");
     } catch (error) {
       setMessage("❌ Failed to add project");
@@ -167,13 +187,60 @@ export default function AddProject() {
           className="input"
         />
 
-        <input
-          type="file"
-          multiple
-          accept="image/*"
-          onChange={handleImageChange}
-          className="input"
-        />
+        {/* Separate image uploads */}
+        <div>
+          <label>Slider 1 Images</label>
+          <input
+            type="file"
+            multiple
+            accept="image/*"
+            onChange={(e) => handleImageChange(e, setSlider1Images)}
+            className="input"
+          />
+        </div>
+
+        <div>
+          <label>Slider 2 Images</label>
+          <input
+            type="file"
+            multiple
+            accept="image/*"
+            onChange={(e) => handleImageChange(e, setSlider2Images)}
+            className="input"
+          />
+        </div>
+
+        <div>
+          <label>Column 1 Images</label>
+          <input
+            type="file"
+            multiple
+            accept="image/*"
+            onChange={(e) => handleImageChange(e, setColumn1Images)}
+            className="input"
+          />
+        </div>
+
+        <div>
+          <label>Column 2 Images</label>
+          <input
+            type="file"
+            multiple
+            accept="image/*"
+            onChange={(e) => handleImageChange(e, setColumn2Images)}
+            className="input"
+          />
+        </div>
+
+        <div>
+          <label>Main Image</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setMainImage(e.target.files?.[0] || null)}
+            className="input"
+          />
+        </div>
 
         <button
           type="submit"
@@ -192,6 +259,13 @@ export default function AddProject() {
           padding: 8px;
           border: 1px solid #ccc;
           border-radius: 6px;
+        }
+
+        label {
+          display: block;
+          font-weight: 600;
+          margin-top: 12px;
+          margin-bottom: 4px;
         }
       `}</style>
     </div>
