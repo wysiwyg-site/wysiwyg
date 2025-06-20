@@ -47,7 +47,7 @@ export default function ScrollScaleImage() {
             style={{ opacity: opacityNew, y: transformY }}
           >
             <div className="flex flex-col gap-10 w-full items-center  rounded-3xl p-4 md:p-10 md:flex-row">
-              <div className=" py-10 w-7/8  text-xl md:text-[36px] 2xl:text-5xl font-semibold text-[#fefdf8]">
+              <div className=" py-10 max-w-[80vw] mx-auto  text-xl md:text-[36px] 2xl:text-5xl font-semibold text-[#fefdf8]">
                 <FadeIn view="-400px">
                   <p className="  text-left my-12  md:ml-28 md:my-16 2xl:m-30">
                     Design isn’t mainstream. It’s got character. It grabs

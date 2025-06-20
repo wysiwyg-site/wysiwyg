@@ -182,7 +182,7 @@ export default function ProjectDetails() {
               key={index}
               src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
               alt={`Project image ${index + 1}`}
-              className="w-full aspect-[16/9] object-cover rounded-sm"
+              className="w-full  object-cover rounded-sm"
             />
           ))}
         </div>
