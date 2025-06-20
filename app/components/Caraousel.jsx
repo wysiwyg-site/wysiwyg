@@ -35,7 +35,7 @@ const Carousel = ({ images }) => {
   const scrollNext = () => emblaApi?.scrollNext();
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {images?.map((src, index) => (
