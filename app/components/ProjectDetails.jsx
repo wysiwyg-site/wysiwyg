@@ -79,7 +79,7 @@ export default function ProjectDetails() {
     <main>
       {/* Background Parallax */}
       <motion.div
-        className=""
+        className="aspect-[16/9]"
         style={{
           y: backgroundY,
           backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL}${project.mainImage})`,
@@ -131,9 +131,9 @@ export default function ProjectDetails() {
           backgroundColor: "white",
         }}
       >
-        <div className="max-w-[80vw] mx-auto   py-8 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-20 text-black">
-          {/* Left: Q&A */}
-          <div>
+        <div className="max-w-[80vw] mx-auto py-8 md:py-20 grid grid-cols-1 md:grid-cols-5 gap-40 text-black">
+          {/* Left: Q&A - span 2 */}
+          <div className="md:col-span-2">
             <h3 className="text-xl font-semibold text-yellow-500 mb-2">
               Problem
             </h3>
@@ -149,8 +149,8 @@ export default function ProjectDetails() {
             </p>
           </div>
 
-          {/* Right: Summary */}
-          <div className="text-base leading-relaxed text-gray-800">
+          {/* Right: Summary - span 3 */}
+          <div className="md:col-span-3 text-base leading-relaxed text-gray-800">
             <h3 className="text-xl font-bold mb-4">{summaryTitle}</h3>
             {summary?.split("\n\n").map((para, i) => (
               <p className="mb-4" key={i}>
@@ -182,7 +182,7 @@ export default function ProjectDetails() {
               key={index}
               src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
               alt={`Project image ${index + 1}`}
-              className="w-full h-full object-cover rounded-sm"
+              className="w-full aspect-[16/9] object-cover rounded-sm"
             />
           ))}
         </div>

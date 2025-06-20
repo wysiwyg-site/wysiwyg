@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 
 import { Playfair_Display } from "next/font/google";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
       <body >
          <Navbar />
         {children}
+        <Footer/>
       </body>
     </html>
   );

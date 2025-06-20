@@ -26,8 +26,8 @@ const Page = async ({ params }) => {
   console.log(category);
 
   return (
-    <div className="mt-25 overflow-hidden">
-      <div className="gap-10 flex flex-col items-center justify-center">
+    <div className="mt-25 overflow-hidden bg-[#fefdf8]">
+      <div className="gap-10 flex flex-col items-center justify-center ">
         <TextComponent project={category?.name} />
         <Portfolio category={params.category} />
       </div>

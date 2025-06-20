@@ -160,7 +160,7 @@ const Navbar = () => {
     <nav
       className={`${navbarClass.backgroundColor} fixed w-full z-40 top-0 left-0 animate-fadeInTopToBottom transition-all duration-300 ${navbarClass.padding}`}
     >
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto relative">
+      <div className="max-w-[80vw] flex flex-wrap items-center justify-between mx-auto relative">
         <Link
           href="/"
           onClick={() => setMenuOpen(false)}

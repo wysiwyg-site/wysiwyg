@@ -40,7 +40,7 @@ export default function StatisticSection() {
   return (
     <section className="bg-black text-white py-30">
       <FadeIn>
-        <div className="w-full mx-auto  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-15  text-center max-w-6xl">
+        <div className="max-w-[80vw] mx-auto  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-15  text-center ">
           {stats.map((stat, index) => (
             <div key={index}>
               <div className="text-4xl  mb-2">

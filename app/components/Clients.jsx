@@ -60,11 +60,11 @@ const Clients = ({ direction = "left" }) => {
   return (
     <div className="bg-black ">
       {/* Top Line */}
-      <div className="animate-fadeInSlow">
-        <div className="w-full h-px bg-gray-500 opacity-40" />
+      <div className="w-full h-px bg-gray-500 opacity-40" />
 
+      <div className="animate-fadeInSlow max-w-[80vw] mx-auto">
         {/* Content Section */}
-        <div className="py-8 px-4 md:px-20 md:flex justify-between items-center gap-10">
+        <div className="py-8  md:flex justify-between items-center gap-10">
           {/* Left Text */}
           <div className="text-white max-w-md flex-shrink-0 z-20 mb-12 md:mb-2">
             <h2 className="text-md md:text-lg text-gray-200 font-medium mb-2">
@@ -110,8 +110,8 @@ const Clients = ({ direction = "left" }) => {
         </div>
 
         {/* Bottom Line */}
-        <div className="w-full h-px bg-gray-500 opacity-40" />
       </div>
+      <div className="w-full h-px bg-gray-500 opacity-40" />
     </div>
   );
 };

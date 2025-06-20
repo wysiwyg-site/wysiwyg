@@ -5,7 +5,7 @@ import React from "react";
 const Footer = () => {
   return (
     <div className="relative h-auto z-[-10]">
-      <div className="mt-[-100vh] h-[185vh] md:h-[145vh] sticky bottom-0 bg-[#111010]">
+      <div className="mt-[-100vh] h-[185vh] md:h-[141vh] sticky bottom-0  ">
         {/* Background image */}
         <Image
           src="/asBG.jpg"
@@ -15,8 +15,8 @@ const Footer = () => {
         />
 
         {/* Overlay */}
-        <div className="absolute bottom-0 w-full text-white  bg-opacity-60">
-          <div className="container mx-auto px-5 py-5">
+        <div className="absolute bottom-0 w-full text-white  bg-opacity-60 bg-[#111010]">
+          <div className="container mx-auto px-5 py-10">
             {/* Top section: Links + Newsletter */}
             <div className="flex flex-col md:flex-row justify-between gap-10">
               {/* Link groups */}

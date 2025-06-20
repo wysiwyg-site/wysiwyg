@@ -45,7 +45,6 @@ export default function Home() {
       <FeaturedContent />
 
       <HorizontalAwardSection />
-      <Footer />
     </div>
   );
 }

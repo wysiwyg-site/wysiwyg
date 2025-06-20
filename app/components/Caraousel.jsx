@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"; // optional: lucide ic
 const Carousel = ({ images }) => {
   const autoplay = useRef(
     Autoplay(
-      { delay: 3000, stopOnInteraction: false },
+      { delay: 5000, stopOnInteraction: false },
       (root) => root.parentElement
     )
   );
@@ -43,7 +43,7 @@ const Carousel = ({ images }) => {
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_URL}${src}`}
                 alt={`Slide ${index + 1}`}
-                className="w-[80vw] mx-auto h-[80vh] object-cover"
+                className="max-w-[80vw]  aspect-[16/9] w-[80vw] mx-auto object-cover"
               />
             </div>
           ))}

@@ -21,7 +21,7 @@ const FeaturedContent = () => {
       ></div>
 
       {/* Content Section */}
-      <div className="relative flex flex-col bg-[#fefdf8] md:flex-row md:gap-10 items-center justify-center min-h-screen p-4 sm:p-6 md:p-12 text-white bg-fixed bg-center bg-cover">
+      <div className="relative max-w-[80vw] mx-auto flex flex-col bg-[#fefdf8] md:flex-row md:gap-10 items-center justify-center min-h-screen py-4 sm:py-6 md:py-12 text-white bg-fixed bg-center bg-cover">
         {/* Left: Image */}
         <div className="w-full md:w-3/5 h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] flex items-center justify-center relative mb-6 md:mb-0 hover:cursor-pointer  transition-all duration-300">
           <FadeIn>
@@ -37,7 +37,7 @@ const FeaturedContent = () => {
         </div>
 
         {/* Right: Text */}
-        <div className="w-full md:w-1/2 bg-opacity-60 mt-10 p-4 sm:p-6 md:p-8  z-10">
+        <div className="w-full md:w-1/2 bg-opacity-60 mt-10   z-10">
           <FadeIn>
             <h1 className="text-2xl sm:text-3xl text-[#111010] md:text-4xl  font-semibold mb-4 sm:mb-6">
               <span className={playfair.className}>featured </span> case study

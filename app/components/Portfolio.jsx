@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios"; // ✅ Axios for API requests
+import Lenis from "@studio-freight/lenis";
 
 import {
   useScroll,
@@ -45,6 +46,15 @@ const Portfolio = ({ category }) => {
     };
 
     fetchProjects();
+  }, []);
+
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
   }, []);
 
   useEffect(() => {
@@ -101,14 +111,14 @@ const Portfolio = ({ category }) => {
   return (
     <div
       ref={container}
-      className="relative w-full min-h-screen scrollbar-hide"
+      className="relative w-full min-h-screen scrollbar-hide "
     >
       <motion.div
         style={{ backgroundColor: bgColor }}
         className="fixed top-0 left-0 w-full h-full -z-10 transition-colors duration-700"
       />
 
-      <div className="container mx-auto py-16">
+      <div className="container mx-auto py-16 ">
         {isLoading ? (
           <p className="text-center text-gray-500">Loading projects...</p>
         ) : (
