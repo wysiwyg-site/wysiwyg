@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { ReactSortable } from "react-sortablejs";
 
 export default function EditPageComponent() {
   const { project_id } = useParams();
@@ -23,7 +24,6 @@ export default function EditPageComponent() {
   const [existingImages, setExistingImages] = useState([]);
   const [mainImage, setMainImage] = useState("");
   const [newImages, setNewImages] = useState([]);
-
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -49,6 +49,7 @@ export default function EditPageComponent() {
         });
 
         setExistingImages(project.images || []);
+        setMainImage(project.mainImage || "");
       } catch (err) {
         console.error("Error fetching project:", err);
       }
@@ -79,6 +80,7 @@ export default function EditPageComponent() {
 
   const handleRemoveExistingImage = (url) => {
     setExistingImages((prev) => prev.filter((img) => img !== url));
+    if (mainImage === url) setMainImage(""); // Unset if removed
   };
 
   const handleSubmit = async (e) => {
@@ -93,7 +95,6 @@ export default function EditPageComponent() {
     payload.append("summary", formData.summary);
     payload.append("mainImage", mainImage);
     payload.append("meta", JSON.stringify(formData.meta));
-    payload.append("retainedImages", JSON.stringify(existingImages));
     payload.append(
       "category",
       JSON.stringify(formData.category.split(",").map((c) => c.trim()))
@@ -102,6 +103,7 @@ export default function EditPageComponent() {
       "tags",
       JSON.stringify(formData.tags.split(",").map((t) => t.trim()))
     );
+    payload.append("retainedImages", JSON.stringify(existingImages));
 
     newImages.forEach((file) => {
       payload.append("images", file);
@@ -177,20 +179,31 @@ export default function EditPageComponent() {
           className="w-full border p-2 rounded"
         />
 
-        <label className="block font-medium mt-4">Existing Images:</label>
-        <div className="flex flex-wrap gap-4">
+        <label className="block font-medium mt-4">
+          Reorder & Manage Existing Images:
+        </label>
+        <p className="text-sm text-gray-500 mb-2">
+          Drag to reorder. First image will show first on the frontend.
+        </p>
+
+        <ReactSortable
+          tag="div"
+          list={existingImages}
+          setList={setExistingImages}
+          className="flex flex-wrap gap-4"
+        >
           {existingImages.map((img, idx) => (
-            <div key={idx} className="relative">
+            <div key={img} className="relative">
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_URL}${img}`}
                 alt=""
-                className="w-24 h-24 object-cover"
+                className="w-24 h-24 object-cover rounded"
               />
               <button
                 type="button"
                 onClick={() => setMainImage(img)}
-                className={`absolute bottom-1 right-1 bg-red-500 text-white rounded px-2 py-1 text-xs ${
-                  mainImage === img ? "text-green-600 font-bold" : ""
+                className={`absolute bottom-1 right-1 bg-blue-500 text-white rounded px-2 py-1 text-xs ${
+                  mainImage === img ? "bg-green-600" : ""
                 }`}
               >
                 {mainImage === img ? "Main Image ✅" : "Set as Main"}
@@ -204,7 +217,7 @@ export default function EditPageComponent() {
               </button>
             </div>
           ))}
-        </div>
+        </ReactSortable>
 
         <label className="block font-medium mt-4">Add New Images:</label>
         <input

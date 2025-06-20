@@ -3,7 +3,7 @@ import EditPageComponent from "../../components/EditPageComponent";
 
 const page = () => {
   return (
-    <div>
+    <div className="bg-[#fefdf8]">
       <EditPageComponent />
     </div>
   );

@@ -60,7 +60,7 @@ const Clients = ({ direction = "left" }) => {
   return (
     <div className="bg-black ">
       {/* Top Line */}
-      <div className="w-full h-px bg-gray-500 opacity-40" />
+      <div className="w-full animate-fadeInSlow h-px bg-gray-500 opacity-40" />
 
       <div className="animate-fadeInSlow max-w-[80vw] mx-auto">
         {/* Content Section */}

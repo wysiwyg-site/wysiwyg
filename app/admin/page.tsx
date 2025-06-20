@@ -2,12 +2,10 @@
 
 import axios from "axios";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState([]);
-  const router = useRouter();
 
   const fetchProjects = async () => {
     try {
@@ -36,7 +34,7 @@ const ProjectsPage = () => {
   }, []);
 
   return (
-    <div className="p-20">
+    <div className="p-20 bg-[#fefdf8]">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Projects</h1>
         <Link href="/admin/add-projects">

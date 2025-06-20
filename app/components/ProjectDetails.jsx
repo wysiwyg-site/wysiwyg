@@ -180,9 +180,9 @@ export default function ProjectDetails() {
             .filter((imgSrc) => imgSrc !== project.mainImage)}
         />
         {/* Image Collage */}
-        <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 py-8 md:py-20">
+        <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 py-8 md:py-20">
           {project.images
-            ?.slice(4, 10)
+            ?.slice(4, 8)
             .filter((imgSrc) => imgSrc !== project.mainImage)
             .map((imgSrc, index) => (
               <img
@@ -196,13 +196,13 @@ export default function ProjectDetails() {
         <div className="bg-[#fefdf8] ">
           <Caraousel
             images={project.images
-              .slice(10, 13)
+              .slice(8, 11)
               .filter((imgSrc) => imgSrc !== project.mainImage)}
           />
         </div>
         <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 py-8 md:py-20">
           {project.images
-            ?.slice(13)
+            ?.slice(11)
             .filter((imgSrc) => imgSrc !== project.mainImage)
             .map((imgSrc, index) => (
               <img
