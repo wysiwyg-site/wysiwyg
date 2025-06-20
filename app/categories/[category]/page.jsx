@@ -1,35 +1,55 @@
-import portfolioData from "../../constants/portfolio.json";
+"use client";
+
+import React, { useState, useEffect, use } from "react";
 import Portfolio from "../../components/Portfolio";
 import TextComponent from "../../components/TextComponent";
-import React from "react";
 
-const { categories } = portfolioData;
+const Page = ({ params }) => {
+  const { category: categorySlug } = use(params); // unwrap params
 
-// Generate static paths for each category
-export async function generateStaticParams() {
-  return categories.map((category) => ({
-    category: category.slug,
-  }));
-}
+  const [category, setCategory] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-// Format slug into human-readable category title
-const formatCategoryName = (slug) => {
-  return slug;
-};
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/categories`
+        );
+        const data = await res.json();
+        const matchedCategory = data.find((cat) => cat.slug === categorySlug);
+        setCategory(matchedCategory);
+      } catch (err) {
+        console.error("Failed to fetch categories:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-const Page = async ({ params }) => {
-  console.log(params.category);
-  const category = categories.find(
-    (category) => category.slug === params.category
-  );
+    fetchData();
+  }, [categorySlug]);
 
-  console.log(category);
+  if (loading) {
+    return (
+      <div className="mt-25 text-center py-20 text-gray-500">
+        Loading category...
+      </div>
+    );
+  }
+
+  if (!category) {
+    return (
+      <div className="mt-25 text-center py-20 text-red-500">
+        Category not found.
+      </div>
+    );
+  }
 
   return (
     <div className="mt-25 overflow-hidden bg-[#fefdf8]">
-      <div className="gap-10 flex flex-col items-center justify-center ">
-        <TextComponent project={category?.name} />
-        <Portfolio category={params.category} />
+      <div className="gap-10 flex flex-col items-center justify-center">
+        <TextComponent project={category.name} />
+        <Portfolio category={categorySlug} />
       </div>
     </div>
   );

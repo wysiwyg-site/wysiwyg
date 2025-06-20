@@ -14,7 +14,7 @@ const playfair = Playfair_Display({
 function Main() {
   return (
     <div className="bg-gradient-to-br from-[#111010] via-[#0f0e0e] to-[#000000]">
-      <section className="animate-fadeInSlow max-w-[80vw] mx-auto min-h-[80vh] flex flex-col lg:flex-row gap-5    justify-between items-center 2xl:px-10   md:pt-24 lg:pt-0 text-white ">
+      <section className="animate-fadeInSlow max-w-[80vw] mx-auto min-h-[80vh] flex flex-col lg:flex-row gap-5    justify-between items-center    md:pt-24 lg:pt-0 text-white ">
         {/* Left section: Headline */}
 
         <div className="mt-10 ">

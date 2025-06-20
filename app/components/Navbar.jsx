@@ -9,7 +9,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const isCategoryRoute = ["/categories", "/about"].some((route) =>
+  const isCategoryRoute = ["/categories", "/about", "/contact"].some((route) =>
     pathname.startsWith(route)
   );
 

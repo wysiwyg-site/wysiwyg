@@ -38,7 +38,7 @@ const stats = [
 
 export default function StatisticSection() {
   return (
-    <section className="bg-black text-white py-30">
+    <section className="bg-black text-white pt-10 pb-30">
       <FadeIn>
         <div className="max-w-[80vw] mx-auto  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-15  text-center ">
           {stats.map((stat, index) => (

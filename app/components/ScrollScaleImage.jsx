@@ -41,29 +41,29 @@ export default function ScrollScaleImage() {
         </motion.div>
 
         {/* Text Overlay */}
-        <div className="absolute inset-0 flex  z-10 px-8 pt-8">
+        <div className="absolute inset-0 flex  w-[80vw] mx-auto   z-10  pt-8">
           <motion.div
             className="text-center"
             style={{ opacity: opacityNew, y: transformY }}
           >
-            <div className="flex flex-col gap-10 w-full items-center  rounded-3xl p-4 md:p-10 md:flex-row">
-              <div className=" py-10 max-w-[80vw] mx-auto  text-xl md:text-[36px] 2xl:text-5xl font-semibold text-[#fefdf8]">
+            <div className="flex flex-col w-full  gap-10 items-center  rounded-3xl  md:flex-row">
+              <div className=" py-10  text-xl md:text-[36px] 2xl:text-5xl font-semibold text-[#fefdf8]">
                 <FadeIn view="-400px">
-                  <p className="  text-left my-12  md:ml-28 md:my-16 2xl:m-30">
+                  <p className="  text-left my-12 md:my-16 ">
                     Design isn’t mainstream. It’s got character. It grabs
                     attention, spins it around, and leaves a mark. If you want
                     quiet, you’re in the wrong place.
                   </p>
                 </FadeIn>
                 <FadeIn view="-400px">
-                  <p className="  text-left  my-12 md:ml-28 md:my-16 2xl:m-30">
+                  <p className="  text-left  my-12 md:my-16 ">
                     Colours aren’t curated—they explode. Palettes are for
                     painters; we mix shades with attitude. Bold? Always. Basic?
                     Never.
                   </p>
                 </FadeIn>
                 <FadeIn view="-400px">
-                  <p className="  text-left my-12 md:ml-28 md:my-16 2xl:m-30">
+                  <p className="  text-left my-12  md:my-16 ">
                     At Wysiwyg, we don’t just design—we disrupt. Creativity
                     isn’t a box to fit into; it’s a wall to break through. We
                     chase the spark, ride the chaos and craft designs that don’t

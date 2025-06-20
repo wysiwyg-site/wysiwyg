@@ -78,9 +78,9 @@ const Clients = ({ direction = "left" }) => {
           </div>
 
           {/* Scrolling Clients */}
-          <div className="relative h-[12vh] overflow-x-hidden flex-1 w-full max-w-full">
+          <div className="relative h-[12vh] overflow-x-hidden items-center   w-full max-w-full">
             <motion.div
-              className="absolute left-0 flex gap-8 md:gap-10 items-center"
+              className="absolute left-0 2xl:top-1/5 flex gap-8 md:gap-10 items-center"
               style={{ x: xTranslation }}
               ref={ref}
               onHoverStart={() => {
@@ -105,7 +105,7 @@ const Clients = ({ direction = "left" }) => {
             </motion.div>
 
             {/* Fade Overlay */}
-            <div className="absolute inset-0 z-10 w-full pointer-events-none bg-[linear-gradient(to_right,_black_0%,_rgba(0,0,0,0.65)_40%,_rgba(0,0,0,0)_60%,_rgba(0,0,0,0.65)_80%,_black_100%)]" />
+            <div className="absolute inset-0 z-10 w-full pointer-events-none bg-[linear-gradient(to_right,_black_0%,_rgba(0,0,0,0.65)_20%,_rgba(0,0,0,0)_60%,_rgba(0,0,0,0.65)_80%,_black_100%)]" />
           </div>
         </div>
 
