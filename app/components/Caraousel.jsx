@@ -43,7 +43,7 @@ const Carousel = ({ images }) => {
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_URL}${src}`}
                 alt={`Slide ${index + 1}`}
-                className="w-[80vw] mx-auto h-[80vh] object-cover"
+                className="w-[90vw] mx-auto h-[80vh] object-cover"
               />
             </div>
           ))}
@@ -53,7 +53,7 @@ const Carousel = ({ images }) => {
       {/* Arrows */}
       <button
         onClick={scrollPrev}
-        className="absolute left-5 top-1/2 -translate-y-1/2 z-10  text-gray-800 rounded-full hover:scale-130 hover:cursor-pointer transition-all duration-500"
+        className="absolute left-20 top-1/2 -translate-y-1/2 z-10  text-gray-300 rounded-full hover:scale-130 hover:cursor-pointer transition-all duration-500"
         aria-label="Previous"
         disabled={!canScrollPrev}
       >
@@ -62,7 +62,7 @@ const Carousel = ({ images }) => {
 
       <button
         onClick={scrollNext}
-        className="absolute right-5 top-1/2 -translate-y-1/2 z-10 p-2 text-gray-800 rounded-full hover:scale-130 hover:cursor-pointer transition-all duration-500"
+        className="absolute right-20 top-1/2 -translate-y-1/2 z-10  text-gray-300 rounded-full hover:scale-130 hover:cursor-pointer transition-all duration-500"
         aria-label="Next"
         disabled={!canScrollNext}
       >

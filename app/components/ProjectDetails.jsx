@@ -129,7 +129,7 @@ export default function ProjectDetails() {
           backgroundColor: "white",
         }}
       >
-        <div className="max-w-8xl mx-auto  w-full p-8 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-20 text-black">
+        <div className="max-w-[90vw] mx-auto   py-8 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-20 text-black">
           {/* Left: Q&A */}
           <div>
             <h3 className="text-xl font-semibold text-yellow-500 mb-2">
@@ -174,7 +174,7 @@ export default function ProjectDetails() {
         </div>
         <Caraousel images={project.images.slice(0, 4)} />
         {/* Image Collage */}
-        <div className="col-span-1 grid grid-cols-1 md:grid-cols-3 gap-4 p-8 md:p-20">
+        <div className="col-span-1 max-w-[90vw] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 py-8 md:py-20">
           {project.images?.slice(4).map((imgSrc, index) => (
             <img
               key={index}
