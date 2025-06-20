@@ -5,12 +5,10 @@ import { ChevronDown } from "lucide-react";
 import Lenis from "@studio-freight/lenis";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { useMediaQuery } from "react-responsive";
 import axios from "axios";
-
+import Caraousel from "./Caraousel";
 export default function ProjectDetails() {
   const { scrollYProgress } = useScroll();
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const { project_id } = useParams();
 
   const [projects, setProjects] = useState([]);
@@ -81,7 +79,7 @@ export default function ProjectDetails() {
     <main>
       {/* Background Parallax */}
       <motion.div
-        className=""
+        className="h-[100vh]"
         style={{
           y: backgroundY,
           backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL}${project.mainImage})`,
@@ -91,16 +89,15 @@ export default function ProjectDetails() {
           top: 0,
           left: 0,
           width: "100%",
-          height: isMobile ? "48vh" : "100vh",
+
           zIndex: -1,
         }}
       />
 
       {/* Hero */}
       <motion.div
-        className="mainPage"
+        className="mainPage h-[100vh]"
         style={{
-          height: isMobile ? "45vh" : "100vh",
           display: "flex",
           justifyContent: "end",
           alignItems: "center",
@@ -132,7 +129,7 @@ export default function ProjectDetails() {
           backgroundColor: "white",
         }}
       >
-        <div className="max-w-7xl w-full p-8 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-12 text-black">
+        <div className="max-w-8xl mx-auto  w-full p-8 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-20 text-black">
           {/* Left: Q&A */}
           <div>
             <h3 className="text-xl font-semibold text-yellow-500 mb-2">
@@ -175,10 +172,10 @@ export default function ProjectDetails() {
             </div>
           </div>
         </div>
-
+        <Caraousel images={project.images.slice(0, 4)} />
         {/* Image Collage */}
         <div className="col-span-1 grid grid-cols-1 md:grid-cols-3 gap-4 p-8 md:p-20">
-          {project.images?.map((imgSrc, index) => (
+          {project.images?.slice(4).map((imgSrc, index) => (
             <img
               key={index}
               src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
