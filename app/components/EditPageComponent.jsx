@@ -1,8 +1,8 @@
 "use client";
 
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
+import axios from "axios";
 import { ReactSortable } from "react-sortablejs";
 
 export default function EditPageComponent() {
@@ -41,36 +41,26 @@ export default function EditPageComponent() {
 
   useEffect(() => {
     const fetchProject = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/projects`
-        );
-        const project = res.data.find((p) => p.project_id === project_id);
-        if (!project) return;
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/projects`
+      );
+      const project = res.data.find((p) => p.project_id === project_id);
+      if (!project) return;
 
-        setFormData({
-          title: project.title,
-          summaryTitle: project.summaryTitle,
-          projectDescription: project.projectDescription,
-          question: project.question,
-          answer: project.answer,
-          summary: project.summary,
-          meta: project.meta,
-          category: project.category.join(", "),
-          tags: project.tags.join(", "),
-        });
+      setFormData({
+        title: project.title,
+        summaryTitle: project.summaryTitle,
+        projectDescription: project.projectDescription,
+        question: project.question,
+        answer: project.answer,
+        summary: project.summary,
+        meta: project.meta,
+        category: project.category.join(", "),
+        tags: project.tags.join(", "),
+      });
 
-        setExistingMainImage(project.mainImage || "");
-
-        setExistingImages({
-          slider1: project.images?.slider1 || [],
-          slider2: project.images?.slider2 || [],
-          column1: project.images?.column1 || [],
-          column2: project.images?.column2 || [],
-        });
-      } catch (err) {
-        console.error("Error fetching project:", err);
-      }
+      setExistingMainImage(project.mainImage);
+      setExistingImages(project.images || {});
     };
 
     fetchProject();
@@ -82,10 +72,7 @@ export default function EditPageComponent() {
       const key = name.split(".")[1];
       setFormData((prev) => ({
         ...prev,
-        meta: {
-          ...prev.meta,
-          [key]: value,
-        },
+        meta: { ...prev.meta, [key]: value },
       }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
@@ -93,10 +80,12 @@ export default function EditPageComponent() {
   };
 
   const handleNewImageChange = (e, group) => {
-    setNewImages((prev) => ({
-      ...prev,
-      [group]: [...e.target.files],
-    }));
+    if (e.target.files) {
+      setNewImages((prev) => ({
+        ...prev,
+        [group]: Array.from(e.target.files),
+      }));
+    }
   };
 
   const handleRemoveExistingImage = (group, url) => {
@@ -108,8 +97,8 @@ export default function EditPageComponent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = new FormData();
 
+    const payload = new FormData();
     payload.append("project_id", project_id);
     payload.append("title", formData.title);
     payload.append("summaryTitle", formData.summaryTitle);
@@ -117,13 +106,6 @@ export default function EditPageComponent() {
     payload.append("question", formData.question);
     payload.append("answer", formData.answer);
     payload.append("summary", formData.summary);
-
-    if (newMainImage) {
-      payload.append("mainImage", newMainImage);
-    } else {
-      payload.append("mainImage", existingMainImage);
-    }
-
     payload.append("meta", JSON.stringify(formData.meta));
     payload.append(
       "category",
@@ -134,12 +116,18 @@ export default function EditPageComponent() {
       JSON.stringify(formData.tags.split(",").map((t) => t.trim()))
     );
 
+    if (newMainImage) {
+      payload.append("mainImage", newMainImage);
+    }
+
+    // Retain existing images
     payload.append("retainedImages", JSON.stringify(existingImages));
 
+    // Append new images
     Object.entries(newImages).forEach(([group, files]) => {
-      for (const file of files) {
-        payload.append(`images_${group}`, file);
-      }
+      files.forEach((file) => {
+        payload.append(group, file);
+      });
     });
 
     try {
@@ -147,9 +135,7 @@ export default function EditPageComponent() {
         `${process.env.NEXT_PUBLIC_BASE_URL}/projects/${project_id}`,
         payload,
         {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+          headers: { "Content-Type": "multipart/form-data" },
         }
       );
       setMessage("✅ Project updated successfully.");
@@ -166,16 +152,14 @@ export default function EditPageComponent() {
         {group} Images
       </label>
       <p className="text-sm text-gray-500 mb-2">Drag to reorder.</p>
-
       <ReactSortable
-        tag="div"
         list={existingImages[group]}
         setList={(list) =>
           setExistingImages((prev) => ({ ...prev, [group]: list }))
         }
         className="flex flex-wrap gap-4"
       >
-        {existingImages[group].map((img) => (
+        {existingImages[group]?.map((img) => (
           <div key={img} className="relative">
             <img
               src={`${process.env.NEXT_PUBLIC_BASE_URL}${img}`}
@@ -192,22 +176,22 @@ export default function EditPageComponent() {
           </div>
         ))}
       </ReactSortable>
-
       <input
         type="file"
-        accept="image/*"
         multiple
+        accept="image/*"
         onChange={(e) => handleNewImageChange(e, group)}
-        className="mt-2 block"
+        className="mt-2 py-1 inline-block w-[200px] rounded-md bg-black text-white"
       />
     </div>
   );
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-6 bg-[#fefdf8]">
       <h1 className="text-2xl font-bold mb-4">Edit Project</h1>
       {message && <p className="mb-4">{message}</p>}
-      <form onSubmit={handleSubmit} className="space-y-4">
+
+      <form onSubmit={handleSubmit} className="space-y-6">
         {[
           "title",
           "summaryTitle",
@@ -215,57 +199,60 @@ export default function EditPageComponent() {
           "question",
           "answer",
           "summary",
-        ].map((field) => (
-          <input
-            key={field}
-            name={field}
-            value={formData[field]}
-            onChange={handleChange}
-            placeholder={field}
-            className="w-full border p-2 rounded"
-            required
-          />
+        ].map((name) => (
+          <div key={name}>
+            <label className="block font-medium mb-1">{name}</label>
+            <input
+              name={name}
+              value={formData[name]}
+              onChange={handleChange}
+              className="input"
+              required
+            />
+          </div>
         ))}
 
-        <div className="grid grid-cols-3 gap-4">
-          {["services", "client", "sector"].map((key) => (
+        {["services", "client", "sector"].map((name) => (
+          <div key={name}>
+            <label className="block font-medium mb-1">Meta: {name}</label>
             <input
-              key={key}
-              name={`meta.${key}`}
-              value={formData.meta[key]}
+              name={`meta.${name}`}
+              value={formData.meta[name]}
               onChange={handleChange}
-              placeholder={`meta: ${key}`}
-              className="w-full border p-2 rounded"
+              className="input"
             />
-          ))}
+          </div>
+        ))}
+
+        <div>
+          <label className="block font-medium mb-1">Categories</label>
+          <input
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            className="input"
+          />
         </div>
 
-        <input
-          name="category"
-          value={formData.category}
-          onChange={handleChange}
-          placeholder="Comma-separated categories"
-          className="w-full border p-2 rounded"
-        />
-        <input
-          name="tags"
-          value={formData.tags}
-          onChange={handleChange}
-          placeholder="Comma-separated tags"
-          className="w-full border p-2 rounded"
-        />
+        <div>
+          <label className="block font-medium mb-1">Tags</label>
+          <input
+            name="tags"
+            value={formData.tags}
+            onChange={handleChange}
+            className="input"
+          />
+        </div>
 
-        {/* Render each image group */}
         {["slider1", "slider2", "column1", "column2"].map(renderSortableGroup)}
 
-        {/* Main Image Section */}
-        <div className="mt-6">
-          <label className="block font-medium mb-2">Main Image</label>
+        {/* Main Image */}
+        <div>
+          <label className="block font-medium mb-1">Main Image</label>
           {existingMainImage && (
             <div className="mb-2 relative w-32">
               <img
                 src={`${process.env.NEXT_PUBLIC_BASE_URL}${existingMainImage}`}
-                alt="Main"
                 className="w-32 h-32 object-cover rounded border"
               />
               <button
@@ -277,21 +264,36 @@ export default function EditPageComponent() {
               </button>
             </div>
           )}
-
           <input
             type="file"
             accept="image/*"
-            onChange={(e) => setNewMainImage(e.target.files[0])}
+            onChange={(e) => setNewMainImage(e.target.files?.[0])}
+            className="input"
           />
         </div>
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-6"
+          className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
         >
           Update Project
         </button>
       </form>
+
+      <style jsx>{`
+        .input {
+          display: block;
+          width: 100%;
+          padding: 8px 12px;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          font-size: 0.95rem;
+        }
+
+        label {
+          font-size: 0.95rem;
+        }
+      `}</style>
     </div>
   );
 }

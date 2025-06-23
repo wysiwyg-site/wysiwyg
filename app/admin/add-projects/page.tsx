@@ -141,56 +141,74 @@ export default function AddProject() {
     <div className="bg-[#fefdf8]">
       <div className="max-w-xl mx-auto py-10">
         <h1 className="text-2xl font-bold mb-6">Add New Project</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {[
-            "project_id",
-            "title",
-            "summaryTitle",
-            "projectDescription",
-            "question",
-            "answer",
-            "summary",
-          ].map((field) => (
-            <input
-              key={field}
-              name={field}
-              placeholder={field}
-              value={(formData as any)[field]}
-              onChange={handleChange}
-              className="input"
-            />
+            { name: "project_id", label: "Project ID" },
+            { name: "title", label: "Title" },
+            { name: "summaryTitle", label: "Summary Title" },
+            { name: "projectDescription", label: "Project Description" },
+            { name: "question", label: "Question" },
+            { name: "answer", label: "Answer" },
+            { name: "summary", label: "Summary" },
+          ].map(({ name, label }) => (
+            <div key={name}>
+              <label className="block font-medium mb-1">{label}</label>
+              <input
+                name={name}
+                placeholder={label}
+                value={(formData as any)[name]}
+                onChange={handleChange}
+                className="input"
+              />
+            </div>
           ))}
 
-          {["services", "client", "sector"].map((field) => (
-            <input
-              key={field}
-              name={`meta.${field}`}
-              placeholder={`Meta: ${field}`}
-              value={(formData.meta as any)[field]}
-              onChange={handleChange}
-              className="input"
-            />
+          {[
+            { name: "services", label: "Meta: Services" },
+            { name: "client", label: "Meta: Client" },
+            { name: "sector", label: "Meta: Sector" },
+          ].map(({ name, label }) => (
+            <div key={name}>
+              <label className="block font-medium mb-1">{label}</label>
+              <input
+                name={`meta.${name}`}
+                placeholder={label}
+                value={(formData.meta as any)[name]}
+                onChange={handleChange}
+                className="input"
+              />
+            </div>
           ))}
 
-          <input
-            name="category"
-            placeholder="Categories (comma-separated)"
-            onChange={handleChange}
-            value={formData.category}
-            className="input"
-          />
-
-          <input
-            name="tags"
-            placeholder="Tags (comma-separated)"
-            onChange={handleChange}
-            value={formData.tags}
-            className="input"
-          />
-
-          {/* Separate image uploads */}
           <div>
-            <label>Slider 1 Images</label>
+            <label className="block font-medium mb-1">
+              Categories (comma-separated)
+            </label>
+            <input
+              name="category"
+              placeholder="branding, ui/ux"
+              onChange={handleChange}
+              value={formData.category}
+              className="input"
+            />
+          </div>
+
+          <div>
+            <label className="block font-medium mb-1">
+              Tags (comma-separated)
+            </label>
+            <input
+              name="tags"
+              placeholder="strategy, tech, design"
+              onChange={handleChange}
+              value={formData.tags}
+              className="input"
+            />
+          </div>
+
+          {/* 🔽 File Uploads */}
+          <div>
+            <label className="block font-medium mb-1">Slider 1 Images</label>
             <input
               type="file"
               multiple
@@ -201,7 +219,7 @@ export default function AddProject() {
           </div>
 
           <div>
-            <label>Slider 2 Images</label>
+            <label className="block font-medium mb-1">Slider 2 Images</label>
             <input
               type="file"
               multiple
@@ -212,7 +230,7 @@ export default function AddProject() {
           </div>
 
           <div>
-            <label>Column 1 Images</label>
+            <label className="block font-medium mb-1">Column 1 Images</label>
             <input
               type="file"
               multiple
@@ -223,7 +241,7 @@ export default function AddProject() {
           </div>
 
           <div>
-            <label>Column 2 Images</label>
+            <label className="block font-medium mb-1">Column 2 Images</label>
             <input
               type="file"
               multiple
@@ -234,7 +252,7 @@ export default function AddProject() {
           </div>
 
           <div>
-            <label>Main Image</label>
+            <label className="block font-medium mb-1">Main Image</label>
             <input
               type="file"
               accept="image/*"
@@ -250,23 +268,25 @@ export default function AddProject() {
             Submit
           </button>
 
-          {message && <p className="mt-4">{message}</p>}
+          {message && (
+            <p className="mt-4 font-medium text-center text-green-700">
+              {message}
+            </p>
+          )}
         </form>
 
         <style jsx>{`
           .input {
             display: block;
             width: 100%;
-            padding: 8px;
+            padding: 8px 12px;
             border: 1px solid #ccc;
             border-radius: 6px;
+            font-size: 0.95rem;
           }
 
           label {
-            display: block;
-            font-weight: 600;
-            margin-top: 12px;
-            margin-bottom: 4px;
+            font-size: 0.95rem;
           }
         `}</style>
       </div>

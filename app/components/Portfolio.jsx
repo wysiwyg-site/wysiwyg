@@ -109,7 +109,7 @@ const Portfolio = ({ category }) => {
         className="fixed top-0 left-0 w-full h-full -z-10 transition-colors duration-700"
       />
 
-      <div className="container mx-auto py-16 ">
+      <div className="container py-16 ">
         {isLoading ? (
           <p className="text-center text-gray-500">Loading projects...</p>
         ) : (
