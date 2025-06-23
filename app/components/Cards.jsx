@@ -6,7 +6,7 @@ const Card = ({ image, name }) => {
 
   return (
     <motion.div
-      className="relative  overflow-hidden h-[100px] min-w-[140px] md:h-[90px] 2xl:h-[120px] md:min-w-[90px] 2xl:min-w-[120px] rounded-sm  flex justify-center items-center group   hover:cursor-pointer transition-all duration-500"
+      className="relative  overflow-hidden h-[120px] min-w-[120px] md:h-[100px] 2xl:h-[120px] md:min-w-[100px] 2xl:w-[120px] rounded-sm  flex justify-center items-center group   hover:cursor-pointer transition-all duration-500"
       key={image}
       onHoverStart={() => setShowOverlay(true)}
       onHoverEnd={() => setShowOverlay(false)}
@@ -43,7 +43,7 @@ const Card = ({ image, name }) => {
           width: "100%",
         }}
       >
-        <div className="h-[80%] w-[90%] relative my-auto inner-div rounded-2xl">
+        <div className="h-[80%] w-[80%] relative my-auto inner-div rounded-2xl">
           <img
             src={image}
             alt={image}

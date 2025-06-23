@@ -6,20 +6,71 @@ import useMeasure from "react-use-measure";
 import Card from "./Cards";
 
 const Clients = ({ direction = "left" }) => {
-  const FAST_DURATION = 37;
-  const SLOW_DURATION = 75;
+  const FAST_DURATION = 100;
+  const SLOW_DURATION = 150;
 
   const clients = [
-    { name: "Apple", image: "/images/client1.png" },
-    { name: "Google", image: "/images/client2.png" },
-    { name: "Microsoft", image: "/images/client3.png" },
-    { name: "Netflix", image: "/images/client4.png" },
-    { name: "Amazon", image: "/images/client5.png" },
-    { name: "Apple", image: "/images/client6.png" },
-    { name: "Google", image: "/images/client7.png" },
-    { name: "Microsoft", image: "/images/client8.png" },
-    { name: "Netflix", image: "/images/client9.png" },
-    { name: "Amazon", image: "/images/client10.png" },
+    { name: "Alcove", image: "/images/clients/client-Alcove.png" },
+    { name: "Ambuja Neotia", image: "/images/clients/client-Ambuja-Neotia.png" },
+    { name: "Anjika", image: "/images/clients/client-Anjika.png" },
+    { name: "Avama Jewellers", image: "/images/clients/client-Avama-Jewellers.png" },
+    { name: "Birla Academy of Art & Culture", image: "/images/clients/client-BAAC.png" },
+    { name: "Belani", image: "/images/clients/client-Belani.png" },
+    { name: "Bigo", image: "/images/clients/client-Bigo.png" },
+    { name: "Birla Elevators", image: "/images/clients/client-Birla-Elevators.png" },
+    { name: "Black Burn", image: "/images/clients/client-Black-Burn.png" },
+    { name: "Celica Residency", image: "/images/clients/client-Celica-Residency.png", link:"/celica-residency" },
+    { name: "Century Veneers", image: "/images/clients/client-Century-Veneers.png", link:"/century-veneers" },
+    { name: "Dentasia", image: "/images/clients/client-Dentasia.png" },
+    { name: "Dinshaw's", image: "/images/clients/client-Dinshaws.png" , link :"/dinshaws" }, 
+    { name: "Earth Day Network", image: "/images/clients/client-Earth-Day-Network.png" },
+    { name: "Electrosteel", image: "/images/clients/client-ElectroSteel.png" },
+    { name: "Embee", image: "/images/clients/client-Embee.png" },
+    { name: "Exide", image: "/images/clients/client-Exide.png" },
+    { name: "Food Station", image: "/images/clients/client-Food-Station.png" },
+    { name: "Frank Ross", image: "/images/clients/client-FrankRoss.png" },
+    { name: "Gallery Sanskriti", image: "/images/clients/client-Gallery-Sanskriti.png" },
+    { name: "Greaves", image: "/images/clients/client-Greaves.png" },
+    { name: "IABA Housing", image: "/images/clients/client-IABA-Housing.png" },
+    { name: "Idly Go", image: "/images/clients/client-IdlyGo.png" },
+    { name: "IFB Agro", image: "/images/clients/client-IFB-Agro.png" },
+    { name: "IFB Appliances", image: "/images/clients/client-IFB-Appliances.png" },
+    { name: "ITC Hotels", image: "/images/clients/client-ITC-Hotels.png" },
+    { name: "ITC", image: "/images/clients/client-ITC.png" },
+    { name: "JD Jones", image: "/images/clients/client-JD-Jones.png" },
+    { name: "Jindal", image: "/images/clients/client-Jindal.png" },
+    { name: "JVL", image: "/images/clients/client-JVL.png" },
+    { name: "Kothari", image: "/images/clients/client-Kothari.png" },
+    { name: "Limtex", image: "/images/clients/client-Limtex.png" },
+    { name: "Magik Cook", image: "/images/clients/client-Magik-Cook.png" },
+    { name: "Mani Casadona", image: "/images/clients/client-Mani-Casadona.png" },
+    { name: "Mansa Sugar", image: "/images/clients/client-Mansa-Sugar.png" },
+    { name: "Mahadevi Birla World Academy", image: "/images/clients/client-MBWA.png" },
+    { name: "Multimoney Forex", image: "/images/clients/client-Multimoney-Forex.png" },
+    { name: "Manovikas Kendra", image: "/images/clients/client-MVK.png" },
+    { name: "Palki", image: "/images/clients/client-Palki.png" },
+    { name: "Poddar HMP Group", image: "/images/clients/client-Poddar-HMP-Group.png" },
+    { name: "Presidency University Kolkata", image: "/images/clients/client-Presidency-University-Kolkata.png" },
+    { name: "Scarlet Splendour", image: "/images/clients/client-Scarlet-Splendour.png" },
+    { name: "South City International School", image: "/images/clients/client-SCIS.png" },
+    { name: "SHE", image: "/images/clients/client-SHE.png" },
+    { name: "Shivom Reality", image: "/images/clients/client-Shivom-Reality.png" },
+    { name: "Siddha", image: "/images/clients/client-Siddha.png" },
+    { name: "SnoBitee", image: "/images/clients/client-SnoBite.png" },
+    { name: "Sofmax", image: "/images/clients/client-Sofmax.png" },
+    { name: "Suwalif Tea", image: "/images/clients/client-Suwalif-Tea.png" },
+    { name: "client Swarnim International School", image: "/images/clients/client-Swarnim-International-School.png" },
+    { name: "Swayam", image: "/images/clients/client-Swayam.png" },
+    { name: "Tata Steel", image: "/images/clients/client-Tata-Steel.png" },
+    { name: "Teloijan", image: "/images/clients/client-Teloijan.png" },
+    { name: "The New Town School", image: "/images/clients/client-The-New-Town-School.png" },
+    { name: "The Organic Mandi", image: "/images/clients/client-The-Organic-Mandi.png" },
+    { name: "The Vedary", image: "/images/clients/client-The-Vedary.png" },
+    { name: "Tycab", image: "/images/clients/client-Tycab.png" },
+    { name: "Visa Steel", image: "/images/clients/client-Visa-Steel.png" },
+    { name: "Zois", image: "/images/clients/client-Zois.png" },
+  
+  
   ];
 
   const [duration, setDuration] = useState(FAST_DURATION);
@@ -105,7 +156,7 @@ const Clients = ({ direction = "left" }) => {
               </motion.div>
 
               {/* Fade Overlay */}
-              <div className="absolute inset-0 z-10 w-full pointer-events-none bg-[linear-gradient(to_right,_black_0%,_rgba(0,0,0,0.65)_20%,_rgba(0,0,0,0)_60%,_rgba(0,0,0,0.65)_80%,_black_100%)]" />
+              <div className="absolute inset-0 z-10 w-full pointer-events-none bg-[linear-gradient(to_right,_black_0%,_rgba(0,0,0,0.45)_15%,_rgba(0,0,0,0)_60%,_rgba(0,0,0,0.45)_85%,_black_100%)]" />
             </div>
           </div>
 
