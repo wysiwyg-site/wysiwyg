@@ -79,16 +79,16 @@ export default function ProjectDetails() {
     <main>
       {/* Background Parallax */}
       <motion.div
-        className="aspect-[16/9]"
+        className="aspect-[16/9] h-[45vh] md:h-[100vh]"
         style={{
           y: backgroundY,
           backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL}${project.mainImage})`,
-          backgroundSize: "cover",
+          backgroundSize: "contain",
           backgroundPosition: "center",
           position: "fixed",
           top: 0,
           left: 0,
-          height: "100vh",
+
           width: "100%",
 
           zIndex: -1,
@@ -97,12 +97,12 @@ export default function ProjectDetails() {
 
       {/* Hero */}
       <motion.div
-        className="mainPage"
+        className="mainPage h-[45vh] md:h-[100vh]"
         style={{
           display: "flex",
           justifyContent: "end",
           alignItems: "center",
-          height: "100vh",
+
           flexDirection: "column",
         }}
       >

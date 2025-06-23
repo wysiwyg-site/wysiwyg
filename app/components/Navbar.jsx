@@ -169,7 +169,7 @@ const Navbar = () => {
           <img
             src={navbarClass.logoSrc}
             alt="Logo"
-            className="h-13 w-13 ml-4 md:ml-0 object-contain top-0"
+            className="h-13 w-13  object-contain top-0"
           />
           <Botton value={"Wysiwyg"} size={"md"} color={navbarClass.textColor} />
         </Link>
@@ -181,7 +181,7 @@ const Navbar = () => {
             setMenuOpen((prev) => !prev);
             setDropdownOpen(false);
           }}
-          className={`inline-flex items-center z-50 p-2 text-sm ${navbarClass.textColor} rounded-lg md:hidden focus:outline-none`}
+          className={`inline-flex items-center z-50 py-2 text-sm ${navbarClass.textColor} rounded-lg md:hidden focus:outline-none`}
         >
           <div className="relative w-6 h-6">
             <svg
@@ -221,11 +221,12 @@ const Navbar = () => {
         <div
           ref={menuRef}
           className={`${
-            menuOpen ? "fixed top-0 z-30 animate-slideDown" : "hidden"
-          } w-full md:flex md:w-auto md:order-1 transition-all duration-100`}
+            menuOpen ? "fixed top-0 left-0 z-30 animate-slideDown" : "hidden"
+          } w-full md:flex md:w-auto md:order-1  transition-all duration-100
+          `}
         >
           <ul
-            className={`flex flex-col p-4 pt-[7vh] md:pt-4 rounded-b-xl relative z-30 ${navbarClass.backgroundColor} md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:bg-transparent`}
+            className={`flex flex-col py-4 pt-[7vh] md:pt-4 rounded-b-xl relative z-30 ${navbarClass.backgroundColor} md:flex-row md:gap-8 md:mt-0 md:text-sm md:font-medium md:bg-transparent`}
           >
             {navItems.map((item) =>
               item.label === "Projects" ? (
@@ -248,7 +249,7 @@ const Navbar = () => {
                   ></span>
 
                   <ul
-                    className={`absolute mt-2 w-[500px] grid grid-cols-4 gap-2 z-50 rounded-md animate-fadeInMedium shadow-lg bg-[#111010] p-4 ${
+                    className={`absolute  mt-2 w-full md:w-[400px] grid grid-cols-3 md:grid-cols-4 gap-2 z-50 rounded-md animate-fadeInMedium shadow-lg bg-[#111010] p-4 ${
                       dropdownOpen ? "grid" : "hidden"
                     }`}
                   >

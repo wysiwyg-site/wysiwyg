@@ -111,7 +111,7 @@ const Portfolio = ({ category }) => {
   return (
     <div
       ref={container}
-      className="relative w-full min-h-screen scrollbar-hide "
+      className="relative max-w-[80vw] min-h-screen scrollbar-hide "
     >
       <motion.div
         style={{ backgroundColor: bgColor }}
@@ -139,7 +139,7 @@ const Portfolio = ({ category }) => {
                   <img
                     src={`${process.env.NEXT_PUBLIC_BASE_URL}${item.mainImage}`}
                     alt={item.title}
-                    className="w-full h-[260px] object-cover transition-transform rounded-sm duration-300 group-hover:scale-105"
+                    className="w-full h-[260px] object-cover transition-transform  duration-300 group-hover:scale-105"
                   />
 
                   <AnimatePresence mode="wait">
@@ -150,7 +150,7 @@ const Portfolio = ({ category }) => {
                         initial="initial"
                         animate="animate"
                         exit="initial"
-                        className="absolute inset-0 bg-black/60 rounded-sm flex flex-col justify-end p-4 pointer-events-none"
+                        className="absolute inset-0 bg-black/60  flex flex-col justify-end p-4 pointer-events-none"
                       >
                         <motion.h3
                           key={`title-${index}`}

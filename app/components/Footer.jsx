@@ -4,8 +4,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="relative h-auto z-[-10]">
-      <div className="mt-[-100vh] h-[185vh] md:h-[141vh] sticky bottom-0  ">
+    <div className="relative h-auto z-[-10] bg-[#111010]">
+      <div className="mt-[-100vh] h-[185vh] md:h-[141vh] sticky bottom-0  max-w-[80vw] mx-auto">
         {/* Background image */}
         <Image
           src="/asBG.jpg"
@@ -16,11 +16,11 @@ const Footer = () => {
 
         {/* Overlay */}
         <div className="absolute bottom-0 w-full text-white  bg-opacity-60 bg-[#111010]">
-          <div className="container mx-auto px-5 py-10">
+          <div className="container mx-auto  py-10">
             {/* Top section: Links + Newsletter */}
             <div className="flex flex-col md:flex-row justify-between gap-10">
               {/* Link groups */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-45 text-sm font-medium">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-45 text-sm font-medium ">
                 <div className="space-y-2 ">
                   <p>ABOUT US</p>
                   <p>ACCOLADES</p>

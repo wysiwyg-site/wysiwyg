@@ -60,58 +60,59 @@ const Clients = ({ direction = "left" }) => {
   return (
     <div className="bg-black ">
       {/* Top Line */}
-      <div className="w-full animate-fadeInSlow h-px bg-gray-500 opacity-40" />
+      <div className="animate-fadeInSlow">
+        <div className="w-full  h-px bg-gray-500 opacity-40 z-0" />
+        <div className=" max-w-[80vw] mx-auto">
+          {/* Content Section */}
+          <div className="py-8  md:flex justify-between items-center gap-10">
+            {/* Left Text */}
+            <div className="text-white max-w-md flex-shrink-0 z-20 mb-12 md:mb-2">
+              <h2 className="text-md md:text-lg text-gray-200 font-medium mb-2">
+                At Wysiwyg, we design with heart, mind, and a bit of madness.
+                Because when you’re creating something unforgettable, playing it
+                safe isn’t part of the script.
+              </h2>
+              <p className="text-gray-200 text-sm md:text-base">
+                As already successfully implemented by 250+ partners:
+              </p>
+            </div>
 
-      <div className="animate-fadeInSlow max-w-[80vw] mx-auto">
-        {/* Content Section */}
-        <div className="py-8  md:flex justify-between items-center gap-10">
-          {/* Left Text */}
-          <div className="text-white max-w-md flex-shrink-0 z-20 mb-12 md:mb-2">
-            <h2 className="text-md md:text-lg text-gray-200 font-medium mb-2">
-              At Wysiwyg, we design with heart, mind, and a bit of madness.
-              Because when you’re creating something unforgettable, playing it
-              safe isn’t part of the script.
-            </h2>
-            <p className="text-gray-200 text-sm md:text-base">
-              As already successfully implemented by 250+ partners:
-            </p>
+            {/* Scrolling Clients */}
+            <div className="relative h-[12vh] overflow-x-hidden items-center   w-full max-w-full">
+              <motion.div
+                className="absolute left-0 2xl:top-1/5 flex gap-8 md:gap-10 items-center"
+                style={{ x: xTranslation }}
+                ref={ref}
+                onHoverStart={() => {
+                  setMustFinish(true);
+                  setDuration(SLOW_DURATION);
+                }}
+                onHoverEnd={() => {
+                  setMustFinish(true);
+                  setDuration(FAST_DURATION);
+                }}
+              >
+                {[...clients, ...clients].map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1 }}
+                  >
+                    <Card image={item.image} name={item.name} />
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {/* Fade Overlay */}
+              <div className="absolute inset-0 z-10 w-full pointer-events-none bg-[linear-gradient(to_right,_black_0%,_rgba(0,0,0,0.65)_20%,_rgba(0,0,0,0)_60%,_rgba(0,0,0,0.65)_80%,_black_100%)]" />
+            </div>
           </div>
 
-          {/* Scrolling Clients */}
-          <div className="relative h-[12vh] overflow-x-hidden items-center   w-full max-w-full">
-            <motion.div
-              className="absolute left-0 2xl:top-1/5 flex gap-8 md:gap-10 items-center"
-              style={{ x: xTranslation }}
-              ref={ref}
-              onHoverStart={() => {
-                setMustFinish(true);
-                setDuration(SLOW_DURATION);
-              }}
-              onHoverEnd={() => {
-                setMustFinish(true);
-                setDuration(FAST_DURATION);
-              }}
-            >
-              {[...clients, ...clients].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1 }}
-                >
-                  <Card image={item.image} name={item.name} />
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Fade Overlay */}
-            <div className="absolute inset-0 z-10 w-full pointer-events-none bg-[linear-gradient(to_right,_black_0%,_rgba(0,0,0,0.65)_20%,_rgba(0,0,0,0)_60%,_rgba(0,0,0,0.65)_80%,_black_100%)]" />
-          </div>
+          {/* Bottom Line */}
         </div>
-
-        {/* Bottom Line */}
+        <div className="w-full h-px bg-gray-500 opacity-40" />
       </div>
-      <div className="w-full h-px bg-gray-500 opacity-40" />
     </div>
   );
 };
