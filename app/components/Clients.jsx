@@ -121,11 +121,12 @@ const Clients = ({ direction = "left" }) => {
               <h2 className="text-md md:text-lg text-gray-200 font-medium mb-2">
                 At Wysiwyg, we design with heart, mind, and a bit of madness.
                 Because when you’re creating something unforgettable, playing it
-                safe isn’t part of the script.
+                safe isn’t part of the script.<br/>
+                 As already successfully implemented by 250+ partners:
               </h2>
-              <p className="text-gray-200 text-sm md:text-base">
+              {/* <p className="text-gray-200 text-sm md:text-base">
                 As already successfully implemented by 250+ partners:
-              </p>
+              </p> */}
             </div>
 
             {/* Scrolling Clients */}
