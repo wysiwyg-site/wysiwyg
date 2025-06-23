@@ -130,7 +130,7 @@ const Clients = ({ direction = "left" }) => {
             </div>
 
             {/* Scrolling Clients */}
-            <div className="relative h-[12vh] overflow-x-hidden items-center   w-full max-w-full">
+            <div className="relative h-[150px] overflow-x-hidden items-center  w-full max-w-full">
               <motion.div
                 className="absolute left-0 2xl:top-1/5 flex gap-8 md:gap-10 items-center"
                 style={{ x: xTranslation }}
