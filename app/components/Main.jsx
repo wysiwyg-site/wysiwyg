@@ -18,7 +18,7 @@ function Main() {
         {/* Left section: Headline */}
 
         <div className="text-left min-w-[50vw]">
-          <h1 className="text-[43px] xs:text-[48px] sm:text-[52px] md:text-8xl   2xl:text-[120px] font-medium  md:leading-tight text-white">
+          <h1 className="text-[2.8rem] sm:text-[52px] md:text-8xl   2xl:text-[120px] font-medium  md:leading-tight text-white">
             We don’t just <br />
             <span className="font-medium">design</span>, we <br />
             <span className={` text-white`}>

@@ -19,22 +19,22 @@ export default function SearchPage() {
   const { scrollYProgress } = useScroll();
   const lenisRef = useRef(null);
 
-  useEffect(() => {
-    const lenis = new Lenis();
-    lenisRef.current = lenis;
+  // useEffect(() => {
+  //   const lenis = new Lenis();
+  //   lenisRef.current = lenis;
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+  //   function raf(time) {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   }
 
-    requestAnimationFrame(raf);
+  //   requestAnimationFrame(raf);
 
-    return () => {
-      lenis.destroy();
-      lenisRef.current = null;
-    };
-  }, []);
+  //   return () => {
+  //     lenis.destroy();
+  //     lenisRef.current = null;
+  //   };
+  // }, []);
 
   // 🔁 Fetch projects (and optionally categories)
   useEffect(() => {
@@ -95,7 +95,7 @@ export default function SearchPage() {
   }, [query, fuse]);
 
   return (
-    <div className="bg-[#111010]">
+    <div className="bg-[#111010] min-h-screen">
       <div className="min-h-screen p-6 md:p-12 pt-15 md:pt-25 text-[#fefdf8] animate-fadeIn max-w-[80vw]">
         <h1 className="text-2xl md:text-3xl font-semibold mb-6">
           Search results for: <span className="text-blue-500">{query}</span>

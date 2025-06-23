@@ -138,136 +138,138 @@ export default function AddProject() {
   };
 
   return (
-    <div className="max-w-xl mx-auto py-10">
-      <h1 className="text-2xl font-bold mb-6">Add New Project</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {[
-          "project_id",
-          "title",
-          "summaryTitle",
-          "projectDescription",
-          "question",
-          "answer",
-          "summary",
-        ].map((field) => (
+    <div className="bg-[#fefdf8]">
+      <div className="max-w-xl mx-auto py-10">
+        <h1 className="text-2xl font-bold mb-6">Add New Project</h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {[
+            "project_id",
+            "title",
+            "summaryTitle",
+            "projectDescription",
+            "question",
+            "answer",
+            "summary",
+          ].map((field) => (
+            <input
+              key={field}
+              name={field}
+              placeholder={field}
+              value={(formData as any)[field]}
+              onChange={handleChange}
+              className="input"
+            />
+          ))}
+
+          {["services", "client", "sector"].map((field) => (
+            <input
+              key={field}
+              name={`meta.${field}`}
+              placeholder={`Meta: ${field}`}
+              value={(formData.meta as any)[field]}
+              onChange={handleChange}
+              className="input"
+            />
+          ))}
+
           <input
-            key={field}
-            name={field}
-            placeholder={field}
-            value={(formData as any)[field]}
+            name="category"
+            placeholder="Categories (comma-separated)"
             onChange={handleChange}
+            value={formData.category}
             className="input"
           />
-        ))}
 
-        {["services", "client", "sector"].map((field) => (
           <input
-            key={field}
-            name={`meta.${field}`}
-            placeholder={`Meta: ${field}`}
-            value={(formData.meta as any)[field]}
+            name="tags"
+            placeholder="Tags (comma-separated)"
             onChange={handleChange}
+            value={formData.tags}
             className="input"
           />
-        ))}
 
-        <input
-          name="category"
-          placeholder="Categories (comma-separated)"
-          onChange={handleChange}
-          value={formData.category}
-          className="input"
-        />
+          {/* Separate image uploads */}
+          <div>
+            <label>Slider 1 Images</label>
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={(e) => handleImageChange(e, setSlider1Images)}
+              className="input"
+            />
+          </div>
 
-        <input
-          name="tags"
-          placeholder="Tags (comma-separated)"
-          onChange={handleChange}
-          value={formData.tags}
-          className="input"
-        />
+          <div>
+            <label>Slider 2 Images</label>
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={(e) => handleImageChange(e, setSlider2Images)}
+              className="input"
+            />
+          </div>
 
-        {/* Separate image uploads */}
-        <div>
-          <label>Slider 1 Images</label>
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            onChange={(e) => handleImageChange(e, setSlider1Images)}
-            className="input"
-          />
-        </div>
+          <div>
+            <label>Column 1 Images</label>
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={(e) => handleImageChange(e, setColumn1Images)}
+              className="input"
+            />
+          </div>
 
-        <div>
-          <label>Slider 2 Images</label>
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            onChange={(e) => handleImageChange(e, setSlider2Images)}
-            className="input"
-          />
-        </div>
+          <div>
+            <label>Column 2 Images</label>
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={(e) => handleImageChange(e, setColumn2Images)}
+              className="input"
+            />
+          </div>
 
-        <div>
-          <label>Column 1 Images</label>
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            onChange={(e) => handleImageChange(e, setColumn1Images)}
-            className="input"
-          />
-        </div>
+          <div>
+            <label>Main Image</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setMainImage(e.target.files?.[0] || null)}
+              className="input"
+            />
+          </div>
 
-        <div>
-          <label>Column 2 Images</label>
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            onChange={(e) => handleImageChange(e, setColumn2Images)}
-            className="input"
-          />
-        </div>
+          <button
+            type="submit"
+            className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+          >
+            Submit
+          </button>
 
-        <div>
-          <label>Main Image</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setMainImage(e.target.files?.[0] || null)}
-            className="input"
-          />
-        </div>
+          {message && <p className="mt-4">{message}</p>}
+        </form>
 
-        <button
-          type="submit"
-          className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
-        >
-          Submit
-        </button>
+        <style jsx>{`
+          .input {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+          }
 
-        {message && <p className="mt-4">{message}</p>}
-      </form>
-
-      <style jsx>{`
-        .input {
-          display: block;
-          width: 100%;
-          padding: 8px;
-          border: 1px solid #ccc;
-          border-radius: 6px;
-        }
-
-        label {
-          display: block;
-          font-weight: 600;
-          margin-top: 12px;
-          margin-bottom: 4px;
-        }
-      `}</style>
+          label {
+            display: block;
+            font-weight: 600;
+            margin-top: 12px;
+            margin-bottom: 4px;
+          }
+        `}</style>
+      </div>
     </div>
   );
 }

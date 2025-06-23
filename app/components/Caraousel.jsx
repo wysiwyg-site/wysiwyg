@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"; // optional: lucide ic
 const Carousel = ({ images }) => {
   const autoplay = useRef(
     Autoplay(
-      { delay: 5000, stopOnInteraction: false },
+      { delay: 4000, stopOnInteraction: false },
       (root) => root.parentElement
     )
   );

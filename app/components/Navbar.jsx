@@ -9,9 +9,13 @@ const Navbar = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const isCategoryRoute = ["/categories", "/about", "/contact"].some((route) =>
-    pathname.startsWith(route)
-  );
+  const isCategoryRoute = [
+    "/categories",
+    "/about",
+    "/contact",
+    "/admin",
+    "/jobs",
+  ].some((route) => pathname.startsWith(route));
 
   const isProjectsRoute =
     pathname.startsWith("/projects/") && pathname.split("/").length > 2;

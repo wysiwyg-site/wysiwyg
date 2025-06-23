@@ -2,10 +2,11 @@
 
 import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const fetchProjects = async () => {
     try {
@@ -20,7 +21,7 @@ const ProjectsPage = () => {
   const deleteProject = async (project_id: string) => {
     if (!confirm("Are you sure you want to delete this project?")) return;
     try {
-      const res = await axios.delete(
+      await axios.delete(
         `${process.env.NEXT_PUBLIC_BASE_URL}/projects/${project_id}`
       );
       fetchProjects();
@@ -33,9 +34,16 @@ const ProjectsPage = () => {
     fetchProjects();
   }, []);
 
+  // Filtered projects based on search query
+  const filteredProjects = useMemo(() => {
+    return projects.filter((project) =>
+      project.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [projects, searchQuery]);
+
   return (
-    <div className="p-20 bg-[#fefdf8]">
-      <div className="flex justify-between items-center mb-4">
+    <div className="p-20 bg-[#fefdf8] min-h-screen">
+      <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Projects</h1>
         <Link href="/admin/add-projects">
           <div className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
@@ -43,11 +51,21 @@ const ProjectsPage = () => {
           </div>
         </Link>
       </div>
-      {projects.length === 0 ? (
+
+      {/* 🔍 Search Bar */}
+      <input
+        type="text"
+        placeholder="Search projects..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="w-full max-w-md mb-8 px-4 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      {filteredProjects.length === 0 ? (
         <p>No projects found.</p>
       ) : (
         <ul className="space-y-4">
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <li
               key={project.project_id}
               className="border rounded p-4 shadow flex justify-between items-center"

@@ -39,14 +39,14 @@ export default function ProjectDetails() {
   }, [project_id]);
 
   // Enable smooth scrolling
-  useEffect(() => {
-    const lenis = new Lenis();
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-  }, []);
+  // useEffect(() => {
+  //   const lenis = new Lenis();
+  //   function raf(time) {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   }
+  //   requestAnimationFrame(raf);
+  // }, []);
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
 

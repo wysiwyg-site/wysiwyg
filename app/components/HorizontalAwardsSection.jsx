@@ -20,23 +20,23 @@ const playfair = Playfair_Display({
 const HorizontalAwardSection = () => {
   const lenisRef = useRef(null);
 
-  useEffect(() => {
-    const lenis = new Lenis();
-    lenisRef.current = lenis;
+  // useEffect(() => {
+  //   const lenis = new Lenis();
+  //   lenisRef.current = lenis;
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+  //   function raf(time) {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   }
 
-    requestAnimationFrame(raf);
+  //   requestAnimationFrame(raf);
 
-    // 🚨 Clean up on component unmount
-    return () => {
-      lenis.destroy();
-      lenisRef.current = null;
-    };
-  }, []);
+  //   // 🚨 Clean up on component unmount
+  //   return () => {
+  //     lenis.destroy();
+  //     lenisRef.current = null;
+  //   };
+  // }, []);
   return (
     <div className="bg-neutral-900">
       <HorizontalScrollCarousel />

@@ -5,9 +5,9 @@ import React from "react";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-[#fefdf8] mt-10 text-black px-4 md:px-20 py-12 grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div className="min-h-screen  bg-[#fefdf8] mt-[10vh] text-black px-4 md:px-20 py-12 grid grid-cols-1 md:grid-cols-2 gap-12">
       {/* Left Column - Contact Info */}
-      <div>
+      <div className="animate-fadeIn">
         <h2 className="text-lg mb-2">Nidhi Harlalka</h2>
         <h1 className="text-2xl font-bold mb-4 uppercase">
           WYSIWYG Communications Private Limited
@@ -42,7 +42,7 @@ export default function ContactPage() {
       </div>
 
       {/* Right Column - Form */}
-      <form className="space-y-6">
+      <form className="space-y-6 animate-fadeIn">
         <h2 className="text-2xl font-semibold mb-4">Send us a message</h2>
 
         <div>
@@ -80,9 +80,9 @@ export default function ContactPage() {
           <label className="block text-sm font-medium mb-1">Subject *</label>
           <select required className="w-full border rounded px-3 py-2">
             <option value="">- Select -</option>
-            <option>General Inquiry</option>
-            <option>Partnership</option>
-            <option>Support</option>
+            <option>We'd love you to design for us </option>
+            <option>Just Curious</option>
+            <option>I'd Love to work at wysiwyg</option>
           </select>
         </div>
 
@@ -96,21 +96,6 @@ export default function ContactPage() {
         </div>
 
         {/* CAPTCHA placeholder */}
-        <div>
-          <img
-            src="/captcha-placeholder.png"
-            alt="captcha"
-            className="h-10 mb-2"
-          />
-          <label className="block text-sm font-medium mb-1">
-            Enter the characters shown in the image. *
-          </label>
-          <input
-            type="text"
-            required
-            className="w-full border rounded px-3 py-2"
-          />
-        </div>
 
         <button
           type="submit"
