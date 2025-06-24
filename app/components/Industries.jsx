@@ -61,6 +61,7 @@ export default function Industries() {
                     alt={project.title}
                     layout="fill"
                     objectFit="cover"
+                    loading="lazy"
                     className="transition-all duration-700 group-hover:cursor-pointer  group-hover:scale-105 "
                   />
 

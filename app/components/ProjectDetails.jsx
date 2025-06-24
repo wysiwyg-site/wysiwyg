@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import axios from "axios";
 import Caraousel from "./Caraousel";
+import Image from "next/image";
 export default function ProjectDetails() {
   const { scrollYProgress } = useScroll();
   const { project_id } = useParams();
@@ -178,10 +179,13 @@ export default function ProjectDetails() {
         {/* Image Collage */}
         <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 py-8 md:py-20">
           {project.images.column1.map((imgSrc, index) => (
-            <img
+            <Image
               key={index}
               src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
               alt={`Project image ${index + 1}`}
+              width={800} // pixel value
+              height={450}
+              loading="lazy"
               className="w-full object-cover rounded-sm"
             />
           ))}
@@ -191,10 +195,13 @@ export default function ProjectDetails() {
         </div>
         <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 py-8 md:py-20">
           {project.images.column2.map((imgSrc, index) => (
-            <img
+            <Image
               key={index}
               src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
               alt={`Project image ${index + 1}`}
+              width={800} // pixel value
+              height={450}
+              loading="lazy"
               className="w-full object-cover rounded-sm"
             />
           ))}

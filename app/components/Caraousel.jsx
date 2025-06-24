@@ -3,7 +3,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { ChevronLeft, ChevronRight } from "lucide-react"; // optional: lucide icons
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image"; // optional: lucide icons
 
 const Carousel = ({ images }) => {
   const autoplay = useRef(
@@ -40,9 +41,12 @@ const Carousel = ({ images }) => {
         <div className="flex">
           {images?.map((src, index) => (
             <div className="min-w-full relative" key={index}>
-              <img
+              <Image
                 src={`${process.env.NEXT_PUBLIC_BASE_URL}${src}`}
                 alt={`Slide ${index + 1}`}
+                width={800} // pixel value
+                height={450}
+                loading="lazy"
                 className="max-w-[80vw]  aspect-[16/9] w-[80vw] mx-auto object-cover"
               />
             </div>

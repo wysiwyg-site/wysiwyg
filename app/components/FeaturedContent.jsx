@@ -30,6 +30,7 @@ const FeaturedContent = () => {
               alt="Case Study"
               width={900}
               height={600}
+              loading="lazy"
               objectFit="cover"
               className=" shadow-xl"
             />

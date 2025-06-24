@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion"; // Update path as per your project structure
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image"; // Update path as per your project structure
 
 const Card = ({ image, name }) => {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -44,9 +45,11 @@ const Card = ({ image, name }) => {
         }}
       >
         <div className="h-[80%] w-[80%] relative  inner-div rounded-2xl">
-          <img
+          <Image
             src={image}
             alt={image}
+            fill
+            loading="lazy"
             className="absolute h-full w-full object-fit filter opacity-80 group-hover:opacity-100 transition duration-500"
           />
         </div>

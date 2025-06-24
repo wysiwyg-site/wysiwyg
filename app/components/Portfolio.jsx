@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios"; // ✅ Axios for API requests
 import Lenis from "@studio-freight/lenis";
+import Image from "next/image";
 
 import {
   useScroll,
@@ -127,9 +128,12 @@ const Portfolio = ({ category }) => {
                   onMouseLeave={() => setHovered(null)}
                   onClick={() => router.push(`/projects/${item.project_id}`)}
                 >
-                  <img
+                  <Image
                     src={`${process.env.NEXT_PUBLIC_BASE_URL}${item.mainImage}`}
                     alt={item.title}
+                    height={720}
+                    width={1280}
+                    loading="lazy"
                     className="w-full h-[260px]  object-cover transition-transform  duration-300 group-hover:scale-105"
                   />
 

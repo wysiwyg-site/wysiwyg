@@ -35,6 +35,7 @@ export default function ScrollScaleImage() {
               src="/images/scrollImage2.jpg"
               fill
               alt="image"
+              loading="lazy"
               className="rounded-xs object-contain"
             />
           </div>
