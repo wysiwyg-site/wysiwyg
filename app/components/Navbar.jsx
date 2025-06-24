@@ -15,6 +15,7 @@ const Navbar = () => {
     "/contact",
     "/admin",
     "/jobs",
+    "/search",
   ].some((route) => pathname.startsWith(route));
 
   const isProjectsRoute =

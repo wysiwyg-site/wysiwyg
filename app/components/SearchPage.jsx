@@ -95,10 +95,10 @@ export default function SearchPage() {
   }, [query, fuse]);
 
   return (
-    <div className="bg-[#111010] min-h-screen">
-      <div className="min-h-screen w-[80vw] mx-auto py-6 md:py-12 pt-15 md:pt-25 text-[#fefdf8] animate-fadeIn max-w-[80vw]">
+    <div className="bg-[#fefdf8] min-h-screen">
+      <div className="min-h-screen w-[80vw] mx-auto py-6 md:py-12 pt-15 md:pt-25 text-[#111010] animate-fadeIn max-w-[80vw]">
         <h1 className="text-2xl md:text-3xl font-semibold mb-6">
-          Search results for: <span className="text-blue-500">{query}</span>
+          Search results for: <span className="text-blue-800">{query}</span>
         </h1>
 
         {projectResults.length > 0 && (
@@ -109,9 +109,9 @@ export default function SearchPage() {
                 <Link
                   key={index}
                   href={`/projects/${project.project_id}`}
-                  className="bg-[#1c1c1c] rounded-lg overflow-hidden shadow-md border border-gray-800 hover:shadow-lg transition"
+                  className=" rounded-lg overflow-hidden shadow-md border  hover:shadow-lg transition"
                 >
-                  <div className="w-full h-48 relative">
+                  <div className="w-full aspect-[16/9] relative">
                     <Image
                       src={`${process.env.NEXT_PUBLIC_BASE_URL}${project.mainImage}`}
                       alt={project.title}
@@ -120,10 +120,10 @@ export default function SearchPage() {
                     />
                   </div>
                   <div className="p-4">
-                    <h3 className="text-lg font-semibold mb-2">
+                    <h3 className="text-lg text-[#111010] font-semibold mb-2">
                       {project.title}
                     </h3>
-                    <p className="text-gray-300 text-sm">
+                    <p className="text-gray-500 text-sm">
                       {project.projectDescription}
                     </p>
                   </div>
@@ -143,12 +143,12 @@ export default function SearchPage() {
                 <Link
                   key={index}
                   href={`/categories/${category.slug}`}
-                  className="block bg-[#1c1c1c] rounded-lg p-5 border border-gray-800 hover:shadow-md transition"
+                  className="block  rounded-lg p-5 shadow-sm  hover:shadow-md transition"
                 >
-                  <h3 className="text-lg font-semibold mb-2 capitalize">
+                  <h3 className="text-lg text-[#111010] font-semibold mb-2 capitalize">
                     📁 {category.name}
                   </h3>
-                  <p className="text-gray-300 text-sm">
+                  <p className="text-gray-500 text-sm">
                     {category.tags?.join(", ")}
                   </p>
                 </Link>
