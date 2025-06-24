@@ -96,7 +96,7 @@ export default function SearchPage() {
 
   return (
     <div className="bg-[#111010] min-h-screen">
-      <div className="min-h-screen p-6 md:p-12 pt-15 md:pt-25 text-[#fefdf8] animate-fadeIn max-w-[80vw]">
+      <div className="min-h-screen w-[80vw] mx-auto py-6 md:py-12 pt-15 md:pt-25 text-[#fefdf8] animate-fadeIn max-w-[80vw]">
         <h1 className="text-2xl md:text-3xl font-semibold mb-6">
           Search results for: <span className="text-blue-500">{query}</span>
         </h1>

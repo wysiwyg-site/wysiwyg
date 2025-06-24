@@ -63,7 +63,11 @@ const Clients = ({ direction = "left" }) => {
     },
     { name: "Greaves", image: "/images/clients/client-Greaves.png" },
     { name: "IABA Housing", image: "/images/clients/client-IABA-Housing.png" },
-    { name: "Idly Go", image: "/images/clients/client-IdlyGo.png" },
+    {
+      name: "Idly Go",
+      image: "/images/clients/client-IdlyGo.png",
+      link: "/idlygo",
+    },
     { name: "IFB Agro", image: "/images/clients/client-IFB-Agro.png" },
     {
       name: "IFB Appliances",
@@ -217,7 +221,7 @@ const Clients = ({ direction = "left" }) => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
                   >
-                    <Link href={item.link ?? ""}>
+                    <Link href={item.link ? `projects/${item.link}` : ""}>
                       <Card image={item.image} name={item.name} />
                     </Link>
                   </motion.div>

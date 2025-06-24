@@ -175,7 +175,10 @@ export default function ProjectDetails() {
             </div>
           </div>
         </div>
-        <Caraousel images={project.images.slider1} />
+        {project.images.slider1.length > 0 ? (
+          <Caraousel images={project.images.slider1} />
+        ) : null}
+
         {/* Image Collage */}
         <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 py-8 md:py-20">
           {project.images.column1.map((imgSrc, index) => (
@@ -190,9 +193,13 @@ export default function ProjectDetails() {
             />
           ))}
         </div>
-        <div className="bg-[#fefdf8] ">
-          <Caraousel images={project.images.slider2} />
-        </div>
+
+        {project.images.slider2.length > 0 ? (
+          <div className="bg-[#fefdf8] ">
+            <Caraousel images={project.images.slider2} />
+          </div>
+        ) : null}
+
         <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 py-8 md:py-20">
           {project.images.column2.map((imgSrc, index) => (
             <Image

@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import FadeIn from "./FadeIn";
+import { useRouter } from "next/navigation";
 
 const projects = [
   {
@@ -29,6 +30,7 @@ const projects = [
 
 export default function Industries() {
   const ref = useRef(null);
+  const router = useRouter();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -55,6 +57,7 @@ export default function Industries() {
                 <div
                   key={index}
                   className="relative min-w-[90%] md:min-w-[25%] h-[85vh] overflow-hidden group hover:cursor-pointer"
+                  onClick={() => router.push(`/search?q=${project.title}`)}
                 >
                   <Image
                     src={project.image}
