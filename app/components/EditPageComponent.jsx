@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import { ReactSortable } from "react-sortablejs";
+import withAuth from "./withAuth";
 
-export default function EditPageComponent() {
+const EditPageComponent = () => {
   const { project_id } = useParams();
   const router = useRouter();
 
@@ -305,4 +306,6 @@ export default function EditPageComponent() {
       `}</style>
     </div>
   );
-}
+};
+
+export default withAuth(EditPageComponent);

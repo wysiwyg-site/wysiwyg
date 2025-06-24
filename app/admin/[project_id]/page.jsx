@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import EditPageComponent from "../../components/EditPageComponent";
 import withAuth from "../../components/withAuth";
@@ -10,4 +11,4 @@ const page = () => {
   );
 };
 
-export default withAuth(page);
+export default page;
