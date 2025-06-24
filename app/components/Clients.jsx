@@ -66,7 +66,7 @@ const Clients = ({ direction = "left" }) => {
     {
       name: "Idly Go",
       image: "/images/clients/client-IdlyGo.png",
-      link: "/idlygo",
+      link: "/idlygo"
     },
     { name: "IFB Agro", image: "/images/clients/client-IFB-Agro.png" },
     {
@@ -94,7 +94,7 @@ const Clients = ({ direction = "left" }) => {
       name: "Multimoney Forex",
       image: "/images/clients/client-Multimoney-Forex.png",
     },
-    { name: "Manovikas Kendra", image: "/images/clients/client-MVK.png" },
+    { name: "Manovikas Kendra", image: "/images/clients/client-MVK.png", link: "/manovikas-kendra" },
     { name: "Palki", image: "/images/clients/client-Palki.png" },
     {
       name: "Poddar HMP Group",
