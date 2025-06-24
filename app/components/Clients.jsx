@@ -221,7 +221,7 @@ const Clients = ({ direction = "left" }) => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
                   >
-                    <Link href={item.link ? `projects/${item.link}` : ""}>
+                    <Link href={item.link ? `projects${item.link}` : ""}>
                       <Card image={item.image} name={item.name} />
                     </Link>
                   </motion.div>
