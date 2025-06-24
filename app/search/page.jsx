@@ -9,10 +9,14 @@ const SearchPage = dynamic(() => import("../components/SearchPage"), {
 
 export default function SearchWrapper() {
   return (
-    <Suspense
-      fallback={<div className="text-white p-10">Loading search...</div>}
-    >
-      <SearchPage />
-    </Suspense>
+    <div className="min-h-screen bg-[#111010]">
+      <Suspense
+        fallback={
+          <div className="text-white h-screen p-10">Loading search...</div>
+        }
+      >
+        <SearchPage />
+      </Suspense>
+    </div>
   );
 }

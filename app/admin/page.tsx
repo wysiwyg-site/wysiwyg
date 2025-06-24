@@ -3,6 +3,7 @@
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState, useMemo } from "react";
+import withAuth from "../components/withAuth";
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState([]);
@@ -95,4 +96,4 @@ const ProjectsPage = () => {
   );
 };
 
-export default ProjectsPage;
+export default withAuth(ProjectsPage);

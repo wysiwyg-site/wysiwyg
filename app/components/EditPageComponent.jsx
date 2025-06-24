@@ -41,26 +41,30 @@ export default function EditPageComponent() {
 
   useEffect(() => {
     const fetchProject = async () => {
-      const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/projects`
-      );
-      const project = res.data.find((p) => p.project_id === project_id);
-      if (!project) return;
+      try {
+        const res = await axios.get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/projects`
+        );
+        const project = res.data.find((p) => p.project_id === project_id);
+        if (!project) return;
 
-      setFormData({
-        title: project.title,
-        summaryTitle: project.summaryTitle,
-        projectDescription: project.projectDescription,
-        question: project.question,
-        answer: project.answer,
-        summary: project.summary,
-        meta: project.meta,
-        category: project.category.join(", "),
-        tags: project.tags.join(", "),
-      });
+        setFormData({
+          title: project.title,
+          summaryTitle: project.summaryTitle,
+          projectDescription: project.projectDescription,
+          question: project.question,
+          answer: project.answer,
+          summary: project.summary,
+          meta: project.meta,
+          category: project.category.join(", "),
+          tags: project.tags.join(", "),
+        });
 
-      setExistingMainImage(project.mainImage);
-      setExistingImages(project.images || {});
+        setExistingMainImage(project.mainImage);
+        setExistingImages(project.images || {});
+      } catch (err) {
+        console.log(err);
+      }
     };
 
     fetchProject();
@@ -135,13 +139,18 @@ export default function EditPageComponent() {
         `${process.env.NEXT_PUBLIC_BASE_URL}/projects/${project_id}`,
         payload,
         {
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
       );
       setMessage("✅ Project updated successfully.");
       router.push("/admin");
     } catch (err) {
-      console.error("Update failed:", err);
+      alert("Update failed Login again");
+      router.push("/admin/login");
+
       setMessage("❌ Failed to update project.");
     }
   };

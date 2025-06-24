@@ -3,8 +3,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import withAuth from "../../components/withAuth";
 
-export default function AddProject() {
+const AddProject = () => {
   const [formData, setFormData] = useState({
     project_id: "",
     title: "",
@@ -106,6 +107,7 @@ export default function AddProject() {
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
@@ -132,6 +134,8 @@ export default function AddProject() {
 
       router.push("/admin");
     } catch (error) {
+      alert("Creation failed Login again");
+      router.push("/admin/login");
       setMessage("❌ Failed to add project");
       console.error(error);
     }
@@ -292,4 +296,6 @@ export default function AddProject() {
       </div>
     </div>
   );
-}
+};
+
+export default withAuth(AddProject);
