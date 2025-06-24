@@ -83,7 +83,7 @@ export default function ProjectDetails() {
         style={{
           y: backgroundY,
           backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL}${project.mainImage})`,
-          backgroundSize: "contain",
+          backgroundSize: "cover",
           backgroundPosition: "center",
           position: "fixed",
           top: 0,

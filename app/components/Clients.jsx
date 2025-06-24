@@ -180,7 +180,7 @@ const Clients = ({ direction = "left" }) => {
         <div className="w-full  h-px bg-gray-500 opacity-40 z-0" />
         <div className=" max-w-[80vw] mx-auto">
           {/* Content Section */}
-          <div className="py-8  md:flex justify-between items-center gap-10">
+          <div className="py-8  lg:flex justify-between items-center gap-10">
             {/* Left Text */}
             <div className="text-white max-w-md flex-shrink-0 z-20 mb-12 md:mb-2">
               <h2 className="text-md md:text-lg text-gray-200 font-medium mb-2">

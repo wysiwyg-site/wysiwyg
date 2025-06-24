@@ -102,18 +102,18 @@ const Portfolio = ({ category }) => {
   return (
     <div
       ref={container}
-      className="relative max-w-[80vw] min-h-screen scrollbar-hide "
+      className="flex w-[80vw] justify-between  min-h-screen scrollbar-hide "
     >
       <motion.div
         style={{ backgroundColor: bgColor }}
         className="fixed top-0 left-0 w-full h-full -z-10 transition-colors duration-700"
       />
 
-      <div className="container py-16 ">
+      <div className="py-16 w-full">
         {isLoading ? (
           <p className="text-center text-gray-500">Loading projects...</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4  gap-6 justify-between">
             {filteredProjects?.map((item, index) => (
               <FadeIn
                 key={index}
@@ -130,7 +130,7 @@ const Portfolio = ({ category }) => {
                   <img
                     src={`${process.env.NEXT_PUBLIC_BASE_URL}${item.mainImage}`}
                     alt={item.title}
-                    className="w-full h-[260px] object-cover transition-transform  duration-300 group-hover:scale-105"
+                    className="w-full h-[260px]  object-cover transition-transform  duration-300 group-hover:scale-105"
                   />
 
                   <AnimatePresence mode="wait">
@@ -143,13 +143,6 @@ const Portfolio = ({ category }) => {
                         exit="initial"
                         className="absolute inset-0 bg-black/60  flex flex-col justify-end p-4 pointer-events-none"
                       >
-                        <motion.h3
-                          key={`title-${index}`}
-                          variants={textVariants}
-                          className="text-lg font-semibold text-white"
-                        >
-                          {item.title}
-                        </motion.h3>
                         <motion.p
                           key={`desc-${index}`}
                           variants={textVariants}
@@ -161,6 +154,8 @@ const Portfolio = ({ category }) => {
                     )}
                   </AnimatePresence>
                 </motion.div>
+                <p className="pt-4 font-medium text-xl"> {item.title}</p>
+                <p className="text-sm text-gray-500">{item.meta.services}</p>
               </FadeIn>
             ))}
           </div>

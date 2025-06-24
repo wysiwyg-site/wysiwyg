@@ -1,24 +1,24 @@
 export default function InternImageGrid() {
   const images = [
     "/images/jobs/img-wi-new-Earning-Learnings.png",
-    "/images/jobs/img-wi-new-Get-real-projects.png",
     "images/jobs/img-wi-new-Job-Apply-now.png",
-    "images/jobs/img-wi-new-Job-roles.png",
     "images/jobs/img-wi-new-Mentor.png",
     "images/jobs/img-wi-new-Summer-of-25.png",
+    "/images/jobs/img-wi-new-Get-real-projects.png",
+    "images/jobs/img-wi-new-Job-roles.png",
+    "images/jobs/img-wi-new-Discover-a-new-city.png",
     "images/jobs/img-wi-new-Up-skill.png",
   ];
 
   return (
     <div className="bg-[#fefdf8]">
-      <div className="px-6 py-20 mt-5 max-w-6xl mx-auto animate-fadeIn">
-        <div className="mb-4 text-sm text-gray-600">Home / Wanted Interns</div>
+      <div className=" py-20 mt-5 w-[80vw] mx-auto animate-fadeIn">
         <h1 className="text-4xl font-bold mb-2">Wanted: Interns</h1>
         <p className="text-lg mb-8">
           7 reasons to intern @wysiwygcommunications
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {images.map((src, idx) => (
             <div
               key={idx}
