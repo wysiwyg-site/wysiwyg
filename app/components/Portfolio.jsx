@@ -92,7 +92,7 @@ const Portfolio = ({ category }) => {
         className="fixed top-0 left-0 w-full h-full -z-10 transition-colors duration-700"
       />
 
-      <div className="py-16 w-full min-h-screen ">
+      <div className="py-10 w-full min-h-screen ">
         {isLoading ? (
           <p className="text-center text-gray-500">Loading projects...</p>
         ) : (
@@ -127,7 +127,7 @@ const Portfolio = ({ category }) => {
                         initial="initial"
                         animate="animate"
                         exit="initial"
-                        className="absolute inset-0 bg-black/60  flex flex-col justify-end p-4 pointer-events-none"
+                        className="absolute inset-0 bg-black/60  flex flex-col justify-center p-4 pointer-events-none"
                       >
                         <motion.p
                           key={`desc-${index}`}
