@@ -40,7 +40,7 @@ const Clients = ({ direction = "left" }) => {
     {
       name: "Century Veneers",
       image: "/images/clients/client-Century-Veneers.png",
-      link: "/century-veneers",
+      link: "",
     },
     { name: "Dentasia", image: "/images/clients/client-Dentasia.png" },
     {
@@ -51,6 +51,7 @@ const Clients = ({ direction = "left" }) => {
     {
       name: "Earth Day Network",
       image: "/images/clients/client-Earth-Day-Network.png",
+      link: "/earth-day-network",
     },
     { name: "Electrosteel", image: "/images/clients/client-ElectroSteel.png" },
     { name: "Embee", image: "/images/clients/client-Embee.png" },
@@ -73,7 +74,8 @@ const Clients = ({ direction = "left" }) => {
       name: "IFB Appliances",
       image: "/images/clients/client-IFB-Appliances.png",
     },
-    { name: "ITC Hotels", image: "/images/clients/client-ITC-Hotels.png" },
+    { name: "ITC Hotels", 
+      image: "/images/clients/client-ITC-Hotels.png", link: "/itchotels" },
     { name: "ITC", image: "/images/clients/client-ITC.png" },
     { name: "JD Jones", image: "/images/clients/client-JD-Jones.png" },
     { name: "Jindal", image: "/images/clients/client-Jindal.png" },
