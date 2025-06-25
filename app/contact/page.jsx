@@ -56,7 +56,7 @@ export default function ContactPage() {
 
   return (
     <div className="bg-[#fefdf8] py-20">
-      <div className="min-h-screen mt-[10vh] text-black w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="mt-[10vh] text-black w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Left Column */}
         <div className="animate-fadeIn">
           <h2 className="text-lg mb-2">Nidhi Harlalka</h2>
@@ -82,7 +82,7 @@ export default function ContactPage() {
           </p>
           <div className="w-full h-64">
             <iframe
-              src="https://www.google.com/maps/embed?pb=..."
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7369.993152959088!2d88.359731!3d22.541801!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02771f12abf9bf%3A0x8cb2f599989f1332!2sWYSIWYG%20Communications%20Private%20Limited!5e0!3m2!1sen!2sus!4v1750420074179!5m2!1sen!2sus"
               width="100%"
               height="100%"
               style={{ border: 0 }}
