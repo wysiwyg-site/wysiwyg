@@ -22,7 +22,9 @@ export default function LoginPage() {
         `${process.env.NEXT_PUBLIC_BASE_URL}/login`,
         formData
       );
+
       localStorage.setItem("token", res.data.accessToken);
+      localStorage.setItem("exp", res.data.exp);
       router.push("/admin"); // or wherever you want to redirect after login
     } catch (err: any) {
       setError(err.response?.data?.error || "Login failed");

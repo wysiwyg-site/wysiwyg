@@ -1,5 +1,5 @@
 "use client";
-
+import ReCAPTCHA from "react-google-recaptcha";
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -21,14 +21,25 @@ export default function ContactPage() {
     }));
   };
 
+  const [captchaToken, setCaptchaToken] = useState("");
+
+  const handleCaptcha = (token) => {
+    setCaptchaToken(token);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!captchaToken) {
+      alert("Please complete the CAPTCHA.");
+      return;
+    }
+
     setStatus("loading");
 
     try {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/contact`,
-        formData,
+        { ...formData, captcha: captchaToken },
         {
           headers: {
             "Content-Type": "application/json",
@@ -45,6 +56,7 @@ export default function ContactPage() {
           subject: "",
           message: "",
         });
+        setCaptchaToken(""); // Reset CAPTCHA
       } else {
         setStatus("error");
       }
@@ -179,6 +191,10 @@ export default function ContactPage() {
               Something went wrong. Please try again.
             </p>
           )}
+          <ReCAPTCHA
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+            onChange={handleCaptcha}
+          />
 
           <button
             type="submit"
