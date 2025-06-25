@@ -26,8 +26,7 @@ const Portfolio = ({ category }) => {
 
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [hovered, setHovered] = useState(null);
   console.log("Base URL:", process.env.NEXT_PUBLIC_BASE_URL);
   // Should log: "Base URL: http://localhost:4000"
@@ -48,23 +47,6 @@ const Portfolio = ({ category }) => {
 
     fetchProjects();
   }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = isModalOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isModalOpen]);
-
-  const handleOpenModal = (item) => {
-    setSelectedItem(item);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedItem(null);
-  };
 
   const bgColor = useTransform(
     scrollYProgress,
@@ -103,14 +85,14 @@ const Portfolio = ({ category }) => {
   return (
     <div
       ref={container}
-      className="flex w-[80vw] justify-between  min-h-screen scrollbar-hide "
+      className="flex w-[80vw]  justify-between  min-h-screen scrollbar-hide "
     >
       <motion.div
         style={{ backgroundColor: bgColor }}
         className="fixed top-0 left-0 w-full h-full -z-10 transition-colors duration-700"
       />
 
-      <div className="py-16 w-full">
+      <div className="py-16 w-full min-h-screen ">
         {isLoading ? (
           <p className="text-center text-gray-500">Loading projects...</p>
         ) : (
@@ -165,22 +147,6 @@ const Portfolio = ({ category }) => {
           </div>
         )}
       </div>
-
-      <AnimatePresence>
-        {isModalOpen && selectedItem && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-50"
-          >
-            <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4">
-              <ProjectCard project={selectedItem} onClose={handleCloseModal} />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };

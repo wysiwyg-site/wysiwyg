@@ -59,6 +59,35 @@ const Botton = ({ value, size, color }) => {
             </span>
           </>
         </>
+      ) : color === "black" ? (
+        <>
+          <div className="relative h-full w-full">
+            {/* First Span */}
+            <span
+              className={`absolute top-0 left-0 z-10 h-full w-full items-center flex  justify-center border  border-gray-500 transition-transform duration-300 ${
+                hovered ? "text-black" : "text-white "
+              }`}
+            >
+              {value}
+            </span>
+
+            {/* Second Span */}
+            <span
+              className={`absolute top-0 left-0 z-0 h-full w-full bg-black flex items-center justify-center transition-transform duration-300 ${
+                hovered
+                  ? "text-black  -translate-y-full"
+                  : "translate-y-0 text-white "
+              }`}
+            ></span>
+          </div>
+
+          {/* Copy of Text Entering from Bottom */}
+          <span
+            className={`absolute left-0 z-0 bg-white h-full w-full transition-transform text-center justify-center duration-300 ${
+              hovered ? "translate-y-0" : "translate-y-full"
+            }`}
+          ></span>
+        </>
       ) : (
         <>
           <div className="relative h-full w-full">

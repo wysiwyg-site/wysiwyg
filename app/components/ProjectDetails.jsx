@@ -53,7 +53,7 @@ export default function ProjectDetails() {
 
   if (isLoading) {
     return (
-      <main className="h-screen flex items-center justify-center text-gray-500">
+      <main className="h-screen flex bg-[#fefdf8] items-center justify-center text-gray-500">
         <p>Loading project...</p>
       </main>
     );
@@ -176,43 +176,47 @@ export default function ProjectDetails() {
           </div>
         </div>
         {project.images.slider1.length > 0 ? (
-          <Caraousel images={project.images.slider1} />
-        ) : null}
-
-        {/* Image Collage */}
-        <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 py-8 md:py-20">
-          {project.images.column1.map((imgSrc, index) => (
-            <Image
-              key={index}
-              src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
-              alt={`Project image ${index + 1}`}
-              width={800} // pixel value
-              height={450}
-              loading="lazy"
-              className="w-full object-cover rounded-sm"
-            />
-          ))}
-        </div>
-
-        {project.images.slider2.length > 0 ? (
-          <div className="bg-[#fefdf8] ">
-            <Caraousel images={project.images.slider2} />
+          <div className="bg-[#fefdf8] pb-8 md:pb-20">
+            <Caraousel images={project.images.slider1} />
           </div>
         ) : null}
 
-        <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 py-8 md:py-20">
-          {project.images.column2.map((imgSrc, index) => (
-            <Image
-              key={index}
-              src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
-              alt={`Project image ${index + 1}`}
-              width={800} // pixel value
-              height={450}
-              loading="lazy"
-              className="w-full object-cover rounded-sm"
-            />
-          ))}
-        </div>
+        {project.images.column1.length > 0 ? (
+          <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 pb-8 md:pb-20">
+            {project.images.column1.map((imgSrc, index) => (
+              <Image
+                key={index}
+                src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
+                alt={`Project image ${index + 1}`}
+                width={800} // pixel value
+                height={450}
+                loading="lazy"
+                className="w-full object-cover rounded-sm"
+              />
+            ))}
+          </div>
+        ) : null}
+
+        {project.images.slider2.length > 0 ? (
+          <div className="bg-[#fefdf8] pb-8 md:pb-20">
+            <Caraousel images={project.images.slider2} />
+          </div>
+        ) : null}
+        {project.images.column2.length > 0 ? (
+          <div className="col-span-1 max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 pb-8 md:pb-20">
+            {project.images.column2.map((imgSrc, index) => (
+              <Image
+                key={index}
+                src={`${process.env.NEXT_PUBLIC_BASE_URL}${imgSrc}`}
+                alt={`Project image ${index + 1}`}
+                width={800} // pixel value
+                height={450}
+                loading="lazy"
+                className="w-full object-cover rounded-sm"
+              />
+            ))}
+          </div>
+        ) : null}
       </motion.div>
     </main>
   );

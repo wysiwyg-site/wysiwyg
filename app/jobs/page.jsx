@@ -1,3 +1,6 @@
+import Botton from "../components/Botton";
+import Link from "next/link";
+
 export default function InternImageGrid() {
   const images = [
     "/images/jobs/img-wi-new-Earning-Learnings.png",
@@ -32,6 +35,15 @@ export default function InternImageGrid() {
             </div>
           ))}
         </div>
+      </div>
+      <div className="w-full flex justify-center items-center pb-20">
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdNNmwUYBn_QHimAKyRk4bf4qkmgZYCCW0mB_f5a7avLZQlfg/viewform"
+        >
+          <Botton value={"Apply Now"} size="xl" color="black" />
+        </Link>
       </div>
     </div>
   );

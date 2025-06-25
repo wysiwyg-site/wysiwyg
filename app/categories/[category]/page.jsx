@@ -31,7 +31,7 @@ const Page = ({ params }) => {
 
   if (loading) {
     return (
-      <div className="mt-25 text-center py-20 text-gray-500">
+      <div className="mt-25 text-center min-h-screen py-20 bg-[#fefdf8] text-gray-500">
         Loading category...
       </div>
     );
@@ -46,7 +46,7 @@ const Page = ({ params }) => {
   }
 
   return (
-    <div className="mt-25 overflow-hidden bg-[#fefdf8]">
+    <div className="mt-25 min-h-screen overflow-hidden bg-[#fefdf8]">
       <div className="gap-10 flex flex-col items-center justify-center">
         <TextComponent project={category.name} />
         <Portfolio category={categorySlug} />
