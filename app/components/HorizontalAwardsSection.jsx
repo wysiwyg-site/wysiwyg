@@ -156,14 +156,14 @@ export default HorizontalAwardSection;
 
 const cards = [
   {
-    url: "/images/award1.jpg",
+    url: "/images/awards/award1.jpg",
     title: "British Council",
     description:
       "Every year the British Council organises the Rivers of the World project, a cultural link between the historic cities of London and Kolkata and the rivers that run through them. Colourful artworks created by the students of Calcutta International School were displayed at the London 2012 Olympics. These were compiled into collages by Wysiwyg, which has been a proud partner in the Rivers of the World project since its very inception.",
     id: 1,
   },
   {
-    url: "/images/award2.jpg",
+    url: "/images/awards/award2.jpg",
     title: "Ambuja Utalika",
     description:
       "We’re over the moon because the Ambuja Utalika has won yet another award. This time it comes from a unanimous jury decision at the eLets India Brand Summit, held at New Delhi last week, for the best launch campaign for ‘Utalika—Let this world be yours’.Proud to be part of a team that consistently pushes the boundaries of creativity.",
@@ -171,28 +171,28 @@ const cards = [
   },
 
   {
-    url: "/images/award6.jpg",
+    url: "/images/awards/award6.jpg",
     title: "Rotary Club",
     description:
       "his award was presented to Wysiwyg by the Rotary Club for  producing the best newsletter for the year 2012–2013. Wysiwyg’sexacting standards of copy, design and artwork were applied to create a finished product, month-after-month, that reflects the esteem and prestige of the Rotary Club of Calcutta.",
     id: 6,
   },
   {
-    url: "/images/award5.jpg",
+    url: "/images/awards/award5.jpg",
     title: "The Packaging Professional",
     description:
       "The Packaging Professional is a British monthly publication and the magazine of the Packaging Society. Wysiwyg’s Executive Director is quoted in it on Pages 11 and 12 in an article by Eoin Redahan about the nuances of the Indian packaging industry. She expounds on the role of technology and unique design in creating effective packaging.",
     id: 5,
   },
   {
-    url: "/images/award8.jpg",
+    url: "/images/awards/award8.jpg",
     title: "ITC Sonar",
     description:
       "This beautiful welcome kit was created for members of the ITC Sonar Spa. It was awarded the Srijan Samman Prize for Folders/Brochures. Immersed in a mellow golden hue, it includes booklets, a brochure and more, designed using gold accents with the frangipani flower as a central thematic element.",
     id: 3,
   },
   {
-    url: "/images/award4.jpg",
+    url: "/images/awards/award4.jpg",
     title: "Festive",
     description:
       "Festive is an annual British catalogue of the best promotional mailing by creative agencies around the world. New year greeting mailers from Wysiwyg are featured on page 112 and show off the imagination and creative exuberance of a team of dedicated and fun-loving professionals.",
@@ -200,7 +200,7 @@ const cards = [
   },
 
   {
-    url: "/images/award7.jpg",
+    url: "/images/awards/award7.jpg",
     title: "Kyoorius",
     description:
       "Kyoorius is a design magazine that publishes an annual compilation of the best design work in India. Wysiwyg is featured on Page 161 of Volume 1 and showcases work for three of its clients: ITC Gold Flake, IFB Home Appliances and Mahadevi Birla World Academy.",
