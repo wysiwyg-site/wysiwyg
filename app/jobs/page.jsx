@@ -3,11 +3,11 @@ import Link from "next/link";
 
 export default function InternImageGrid() {
   const images = [
-    "/images/jobs/img-wi-new-Earning-Learnings.png",
+    "images/jobs/img-wi-new-Earning-Learnings.png",
     "images/jobs/img-wi-new-Job-Apply-now.png",
     "images/jobs/img-wi-new-Mentor.png",
     "images/jobs/img-wi-new-Summer-of-25.png",
-    "/images/jobs/img-wi-new-Get-real-projects.png",
+    "images/jobs/img-wi-new-Get-real-projects.png",
     "images/jobs/img-wi-new-Job-roles.png",
     "images/jobs/img-wi-new-Discover-a-new-city.png",
     "images/jobs/img-wi-new-Up-skill.png",
