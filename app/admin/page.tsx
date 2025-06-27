@@ -4,10 +4,12 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState, useMemo } from "react";
 import withAuth from "../components/withAuth";
+import { useRouter } from "next/navigation";
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
 
   const fetchProjects = async () => {
     try {
@@ -46,11 +48,24 @@ const ProjectsPage = () => {
     <div className="p-20 bg-[#fefdf8] min-h-screen">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Projects</h1>
-        <Link href="/admin/add-projects">
-          <div className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
-            + Add Project
+        <div className="flex gap-2">
+          <Link href="/admin/add-projects">
+            <div className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+              + Add Project
+            </div>
+          </Link>
+          <div
+            onClick={() => {
+              localStorage.removeItem("token");
+              localStorage.removeItem("exp");
+              router.replace("/admin/login");
+            }}
+          >
+            <div className="bg-red-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+              Signout
+            </div>
           </div>
-        </Link>
+        </div>
       </div>
 
       {/* 🔍 Search Bar */}
